@@ -1,3 +1,6 @@
 # Ignore artifacts:
+node_modules
+/.vscode
+/.git
 build
 coverage
