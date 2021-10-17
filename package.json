@@ -13,6 +13,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "typescript-eslint": "0.0.1-alpha.0",
     "typescript": "^4.4.3",
     "web-vitals": "^1.1.2"
   },
@@ -24,7 +25,7 @@
     "prepare": "husky install",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix --color",
-    "prettier": "prettier --write src/**/*.js"
+    "prettier": "prettier --write ./src"
   },
   "eslintConfig": {
     "extends": [
@@ -45,16 +46,18 @@
     ]
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.15.8",
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
-    "eslint": "^8.0.0",
+    "eslint": "7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.26.1",
     "husky": "^7.0.2",
     "lint-staged": "^11.2.3",
-    "prettier": "2.4.1"
+    "prettier": "2.4.1",
+    "typescript": "^4.4.4"
   },
   "husky": {
     "hooks": {
@@ -65,10 +68,10 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{js,jsx,ts,tsx,json}": [
       "npm run lint:fix",
-      "prettier --write",
-      "git add"
+      "npm run prettier",
+      "git add ."
     ]
   }
 }
