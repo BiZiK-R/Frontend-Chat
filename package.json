@@ -22,8 +22,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "lint" : "eslint ./src",
-    "lint:fix": "eslint ./src --fix --color"
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix --color",
+    "prettier": "prettier --write src/**/*.js"
   },
   "eslintConfig": {
     "extends": [
@@ -58,13 +59,16 @@
   "husky": {
     "hooks": {
       "commit-msg": "npx --no-install commitlint --edit '$1'",
-      "pre-commit": "lint-staged"
+      "pre-commit": [
+        "lint-staged"
+      ]
     }
   },
   "lint-staged": {
-    "*.tsx": [
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "npm run lint:fix",
-      "git add ."
+      "prettier --write",
+      "git add"
     ]
   }
 }
