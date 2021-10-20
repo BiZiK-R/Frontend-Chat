@@ -50,23 +50,13 @@ const FormLogin: FC = () => {
 
   return (
     <div className="FormLogin">
-      <div className="FormLogin__header">
-        <img className="FormLogin__header__logo" src="/image/logo.svg" />
-        <h1 className="FormLogin__header__title">
-          Wellcome to <span className="_color__blue">Chatty</span>
-          <span className="_color__light__blue">!</span>
-        </h1>
-        <h2 className="FormLogin__header__desciption">
-          Please, autorize yourself
-        </h2>
-      </div>
       <form className="FormLogin__form">
         <InputForm
           onBlur={onBlurUsername}
           onChange={onChangeUsername}
           validInput={valideInputUsername}
           value={valueInputUsername}
-          theme="_username"
+          theme="username"
           description="User name"
           placeholder="Input user name"
           type="text"
@@ -76,7 +66,7 @@ const FormLogin: FC = () => {
           onChange={onChangePassword}
           validInput={valideInputPassword}
           value={valueInputPassword}
-          theme="_password"
+          theme="password"
           description="Password"
           placeholder="Input password"
           type="password"

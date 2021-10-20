@@ -41,7 +41,7 @@ const InputForm: FC<InputFormProps> = ({
   };
 
   return (
-    <div className={cn("InputForm", `InputForm${theme}`)}>
+    <div className={cn("InputForm", `InputForm_${theme}`)}>
       <span className="InputForm__description">{description}</span>
       <label
         className={cn(
