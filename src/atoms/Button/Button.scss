@@ -1,0 +1,33 @@
+$botton-colors: (
+  "regular": #5c98f1,
+  "hover": #4583de,
+  "press": #2c6ac7,
+  "inactiv": #d1d1d1,
+  "text": #ffffff,
+);
+
+@function botton-color($key: "regular") {
+  @return map-get($botton-colors, $key);
+}
+
+.Button {
+  width: 233px;
+  height: 56px;
+  font-size: 15px;
+
+  outline: none;
+  border: none;
+
+  background: botton-color("regular");
+  border-radius: 8px;
+  color: botton-color("text");
+  &:hover {
+    background: botton-color("hover");
+  }
+  &:active {
+    background: botton-color("press");
+  }
+  &:disabled {
+    background: botton-color("inactiv");
+  }
+}
