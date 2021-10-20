@@ -9,47 +9,61 @@ $input-colors: (
 }
 
 .InputForm {
-  display: flex;
-  box-sizing: border-box;
-  cursor: text;
+  height: 102px;
 
-  width: 354px;
-  height: 56px;
+  &__description {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 19px;
+  }
 
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px solid input-color("initial");
-
-  &__target {
-    outline: none;
-    border: none;
+  &__wrapper {
+    display: flex;
     box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-  }
-  &_typing {
-    border-color: input-color("typing");
-  }
-  &_error {
-    border-color: input-color("error");
-    &__text {
-      color: input-color("error");
-      font-family: Montserrat;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 13px;
-      line-height: 19px;
-      margin-left: 8px;
-    }
-    &::after {
-      content: "";
+    cursor: text;
+
+    width: 354px;
+    height: 56px;
+
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid input-color("initial");
+
+    &__target {
+      outline: none;
+      border: none;
       box-sizing: border-box;
-      width: 19px;
-      height: 18px;
-      background-image: url(./errorInput.svg);
-      background-size: cover;
-      margin: auto;
-      right: 0;
+      width: 100%;
+      height: 100%;
     }
+    &_typing {
+      border-color: input-color("typing");
+    }
+    &_error {
+      border-color: input-color("error");
+      &::after {
+        content: "";
+        box-sizing: border-box;
+        width: 19px;
+        height: 18px;
+        background-image: url(./errorInput.svg);
+        background-size: cover;
+        margin: auto;
+        right: 0;
+      }
+    }
+  }
+  &_error__text {
+    color: input-color("error");
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 19px;
+    margin-left: 8px;
+  }
+  &_username {
+    margin-bottom: 13px;
+  }
+  &_password {
+    margin-bottom: 29px;
   }
 }

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useCallback } from "react";
 import cn from "classnames";
 import Input from "../../atoms/Input";
 
@@ -6,54 +6,65 @@ import "./inputForm.scss";
 
 interface InputFormProps {
   placeholder: string;
+  description: string;
+  value: string;
   required?: boolean;
   type?: "text" | "password" | "email";
-  invalidInput?: boolean;
+  validInput?: boolean;
   onChange: (value: string) => string;
+  onBlur: () => void;
+  theme?: string;
 }
 
 const InputForm: FC<InputFormProps> = ({
   placeholder,
   required,
+  value,
   type,
-  invalidInput,
+  validInput,
   onChange,
+  description,
+  onBlur,
+  theme,
 }) => {
-  const [valueInput, setValueInput] = useState("");
   const [focusInput, setFocusInput] = useState(false);
 
   const onFocus = () => {
     setFocusInput(true);
   };
 
-  const onBlur = () => {
-    setFocusInput(false);
+  const callbacks = {
+    onBlur: useCallback(() => {
+      setFocusInput(false);
+      return onBlur();
+    }, [onBlur]),
   };
 
   return (
-    <>
+    <div className={cn("InputForm", `InputForm${theme}`)}>
+      <span className="InputForm__description">{description}</span>
       <label
         className={cn(
-          "InputForm",
-          focusInput ? "InputForm_typing" : "",
-          invalidInput ? "InputForm_error" : ""
+          "InputForm__wrapper",
+          focusInput ? "InputForm__wrapper_typing" : "",
+          !validInput ? "InputForm__wrapper_error" : ""
         )}
       >
         <Input
           onChange={onChange}
           onFocus={onFocus}
-          onBlur={onBlur}
-          value={valueInput}
-          className="InputForm__target"
+          onBlur={callbacks.onBlur}
+          value={value}
+          className="InputForm__wrapper__target"
           required={required}
           type={type}
           placeholder={placeholder}
         />
       </label>
-      {invalidInput && (
+      {!validInput && (
         <div className="InputForm_error__text">Something goes wrong</div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -13,8 +13,8 @@ interface InputProps {
   tabIndex: number;
   autocomplete: boolean;
   onChange: (e: Event) => string;
-  onFocus: (e: HTMLInputElement) => HTMLInputElement;
-  onBlur: () => HTMLInputElement;
+  onFocus: () => void;
+  onBlur: () => void;
 }
 
 const Input: FC<InputProps> = ({
@@ -38,12 +38,9 @@ const Input: FC<InputProps> = ({
       },
       [onChange]
     ),
-    onFocus: useCallback(
-      (e) => {
-        return onFocus(e);
-      },
-      [onFocus]
-    ),
+    onFocus: useCallback(() => {
+      return onFocus();
+    }, [onFocus]),
     onBlur: useCallback(() => {
       return onBlur();
     }, [onBlur]),

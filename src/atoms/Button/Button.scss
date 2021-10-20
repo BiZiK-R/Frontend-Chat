@@ -18,6 +18,13 @@ $botton-colors: (
   outline: none;
   border: none;
 
+  font-family: Montserrat;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 23px;
+  letter-spacing: 0em;
+
   background: botton-color("regular");
   border-radius: 8px;
   color: botton-color("text");

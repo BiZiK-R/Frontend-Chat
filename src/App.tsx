@@ -1,13 +1,13 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import Button from "./atoms/Button";
 import InputForm from "./molecules/inputForm";
+import FormLogin from "./organisms/formLogin";
 
 function App() {
   return (
     <div className="App">
-      <Button type="button">Log in</Button>
-      <InputForm required type="email" placeholder="Input user name" />
+      <FormLogin></FormLogin>
     </div>
   );
 }
