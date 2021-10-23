@@ -1,4 +1,4 @@
-.Login {
+.login {
   display: flex;
   &__content {
     margin: 256px 121px 0 121px;
@@ -23,7 +23,7 @@
   }
   &__backgraund {
     background: #eff5ff no-repeat;
-    background-image: url(./loginBackgraund.svg);
+    background-image: url(../../assets/loginBackgraund.svg);
     background-size: cover;
     width: calc(100% - 716px);
     height: 100vh;

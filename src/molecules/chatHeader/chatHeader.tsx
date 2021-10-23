@@ -10,7 +10,7 @@ const ChatHeader: FC = () => {
       <Logo theme="chatHeader" />
       <div className="chat-header__icon">
         <img
-          className="ChatHeader__icon__img"
+          className="chat-header__icon__img"
           src="/image/icon/iconChatHeader.svg"
         />
       </div>

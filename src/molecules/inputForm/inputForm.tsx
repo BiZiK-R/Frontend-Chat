@@ -41,13 +41,13 @@ const InputForm: FC<InputFormProps> = ({
   };
 
   return (
-    <div className={cn("InputForm", `InputForm_${theme}`)}>
-      <span className="InputForm__description">{description}</span>
+    <div className={cn("input-form", `input-form_${theme}`)}>
+      <span className="input-form__description">{description}</span>
       <label
         className={cn(
-          "InputForm__wrapper",
-          focusInput ? "InputForm__wrapper_typing" : "",
-          !validInput ? "InputForm__wrapper_error" : ""
+          "input-form__wrapper",
+          focusInput ? "input-form__wrapper_typing" : "",
+          !validInput ? "input-form__wrapper_error" : ""
         )}
       >
         <Input
@@ -55,14 +55,14 @@ const InputForm: FC<InputFormProps> = ({
           onFocus={onFocus}
           onBlur={callbacks.onBlur}
           value={value}
-          className="InputForm__wrapper__target"
+          className="input-form__wrapper__target"
           required={required}
           type={type}
           placeholder={placeholder}
         />
       </label>
       {!validInput && (
-        <div className="InputForm_error__text">Something goes wrong</div>
+        <div className="input-form_error__text">Something goes wrong</div>
       )}
     </div>
   );

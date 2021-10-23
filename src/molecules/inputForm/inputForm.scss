@@ -8,7 +8,7 @@ $input-colors: (
   @return map-get($input-colors, $key);
 }
 
-.InputForm {
+.input-form {
   height: 102px;
 
   &__description {
@@ -46,7 +46,7 @@ $input-colors: (
         box-sizing: border-box;
         width: 19px;
         height: 18px;
-        background-image: url(./errorInput.svg);
+        background-image: url(../../assets/errorInput.svg);
         background-size: cover;
         margin: auto;
         right: 0;

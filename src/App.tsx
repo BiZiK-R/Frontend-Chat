@@ -6,7 +6,7 @@ import ChatHeader from "./molecules/chatHeader";
 function App() {
   return (
     <div className="App">
-      <ChatHeader />
+      <Login />
     </div>
   );
 }
