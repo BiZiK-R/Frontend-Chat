@@ -10,7 +10,7 @@ $botton-colors: (
   @return map-get($botton-colors, $key);
 }
 
-.Button {
+.button {
   width: 233px;
   height: 56px;
   font-size: 15px;

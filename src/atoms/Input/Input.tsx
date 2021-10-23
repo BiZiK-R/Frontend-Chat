@@ -47,9 +47,9 @@ const Input: FC<InputProps> = ({
   };
 
   return (
-    <div className={cn("Input")}>
+    <div className="input">
       <input
-        className="Input__input"
+        className="input__input"
         value={value}
         type={type}
         placeholder={placeholder}

@@ -8,7 +8,7 @@ interface LogoProps {
 }
 
 const Logo: FC<LogoProps> = ({ theme }) => {
-  return <img className={cn("Logo", `Logo_${theme}`)} src="/image/logo.svg" />;
+  return <img className={cn("logo", `logo_${theme}`)} src="/image/logo.svg" />;
 };
 
 export default Logo;

@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap");
+
+@media screen and (max-width: 375px) {
+  body {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+
+    h1 {
+      font-size: 27px;
+      font-weight: 800;
+      line-height: 33px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 20px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+
+    h4 {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 18px;
+    }
+  }
+}
+
+body {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  color: #333333;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 51px;
+}
+
+h2 {
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 33px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+h4 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+}
