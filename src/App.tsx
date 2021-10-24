@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.scss";
 import Login from "./pages/login";
-import ChatHeader from "./molecules/chatHeader";
+import Chat from "./pages/chat";
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <Chat />
     </div>
   );
 }

@@ -1,0 +1,8 @@
+.chat-message {
+  width: calc(100% - 363px);
+  height: 100%;
+  background: #eff5ff no-repeat;
+  background-image: url(../../assets/chatMessageBackgraund.svg);
+  background-size: cover;
+  position: relative;
+}

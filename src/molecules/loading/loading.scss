@@ -1,0 +1,30 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  &__img {
+    margin: auto;
+    width: 26px;
+    height: 26px;
+    animation: spin 5s linear 0s infinite;
+  }
+}
