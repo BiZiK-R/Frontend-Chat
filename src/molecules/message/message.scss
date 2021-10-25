@@ -1,0 +1,16 @@
+.message {
+  display: inline-block;
+  border: 1px solid #d7e6ff;
+  box-sizing: border-box;
+  border-radius: 12px;
+  &_your-msg {
+    background: #e9f2ff;
+  }
+  &_some-else-msg {
+    background: #ffffff;
+  }
+
+  &__text {
+    padding: 12px 14px;
+  }
+}

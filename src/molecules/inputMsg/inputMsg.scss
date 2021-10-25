@@ -1,0 +1,18 @@
+.input-msg {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 80px;
+  background: #ffffff;
+  box-sizing: border-box;
+  &__clip-icon {
+    margin: 25px 32px 25px 25px;
+    cursor: pointer;
+  }
+  &__send-icon {
+    margin-right: 25px;
+    cursor: pointer;
+  }
+}

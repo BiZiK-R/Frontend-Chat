@@ -7,14 +7,15 @@ interface InputProps {
   value: string;
   type: string;
   placeholder: string;
-  required: boolean;
-  focused: boolean;
-  disabled: boolean;
-  tabIndex: number;
-  autocomplete: boolean;
-  onChange: (e: Event) => string;
-  onFocus: () => void;
-  onBlur: () => void;
+  required?: boolean;
+  focused?: boolean;
+  disabled?: boolean;
+  tabIndex?: number;
+  autocomplete?: boolean;
+  onChange?: (e: Event) => string;
+  onFocus?: () => void;
+  onBlur?: () => void;
+  theme?: string;
 }
 
 const Input: FC<InputProps> = ({
@@ -26,9 +27,16 @@ const Input: FC<InputProps> = ({
   disabled = false,
   tabIndex,
   autocomplete,
-  onChange,
-  onFocus,
-  onBlur,
+  onChange = () => {
+    //do nothing
+  },
+  onFocus = () => {
+    //do nothing
+  },
+  onBlur = () => {
+    //do nothing
+  },
+  theme,
 }) => {
   const callbacks = {
     onChange: useCallback(
@@ -49,7 +57,7 @@ const Input: FC<InputProps> = ({
   return (
     <div className="input">
       <input
-        className="input__input"
+        className={cn("input__input", `input__input_${theme}`)}
         value={value}
         type={type}
         placeholder={placeholder}

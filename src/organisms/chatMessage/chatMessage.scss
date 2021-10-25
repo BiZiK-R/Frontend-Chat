@@ -1,8 +1,31 @@
 .chat-message {
   width: calc(100% - 363px);
   height: 100%;
+  position: relative;
   background: #eff5ff no-repeat;
   background-image: url(../../assets/chatMessageBackgraund.svg);
   background-size: cover;
-  position: relative;
+
+  &__messages {
+    width: 100%;
+    height: calc(100% - 96px - 80px);
+    margin-top: 96px;
+    margin-bottom: 80px;
+  }
+
+  &__dialogue-no-selected {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #5e93e7;
+    box-sizing: border-box;
+    border-radius: 32px;
+
+    position: absolute;
+    top: calc(50% - 80px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &__text {
+      margin: 19px 46px;
+    }
+  }
 }
