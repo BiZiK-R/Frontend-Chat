@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import cn from "classnames";
 import { ChatContactItem } from "../../molecules/chatContactItem";
 
 import "./chatContactList.scss";
@@ -20,6 +19,7 @@ const ChatContactList: FC = () => {
         name="Marina Joe"
         lastMsg="Sed ut per..."
         lastMsgYou={true}
+        select
       />
       <ChatContactItem
         name="Ernest Gillroy"

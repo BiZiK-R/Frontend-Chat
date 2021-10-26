@@ -26,6 +26,30 @@ const ChatMessage: FC = () => {
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
           accusanti
         </Message>
+        <Message yourMsg={false}>
+          perspiciatis unde omnis iste natus error sit voluptatem accusanti
+        </Message>
+        <Message yourMsg={true}>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusanti
+        </Message>
+        <Message yourMsg={false}>
+          perspiciatis unde omnis iste natus error sit voluptatem accusanti
+        </Message>
+        <Message yourMsg={true}>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusanti
+        </Message>
+        <Message yourMsg={false}>
+          perspiciatis unde omnis iste natus error sit voluptatem accusanti
+        </Message>
+        <Message yourMsg={true}>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusanti
+        </Message>
+        <Message yourMsg={false}>
+          perspiciatis unde omnis iste natus error sit voluptatem accusanti
+        </Message>
       </div>
       <InputMsg
         value={valueInput}

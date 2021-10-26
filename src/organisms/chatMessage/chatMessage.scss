@@ -11,6 +11,25 @@
     height: calc(100% - 96px - 80px);
     margin-top: 96px;
     margin-bottom: 80px;
+    padding-top: 36px;
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: auto;
+    box-sizing: border-box;
+    &::-webkit-scrollbar {
+      background-color: #e1ecfe;
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 12px;
+      background-color: #c5daff;
+    }
+
+    &:-webkit-scrollbar-track {
+      border-radius: 12px;
+      background-color: #e1ecfe;
+    }
   }
 
   &__dialogue-no-selected {

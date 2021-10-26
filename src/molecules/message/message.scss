@@ -3,11 +3,55 @@
   border: 1px solid #d7e6ff;
   box-sizing: border-box;
   border-radius: 12px;
+  max-width: 491px;
+  margin: 36px;
+  margin-top: 0;
+
   &_your-msg {
     background: #e9f2ff;
+    margin-left: auto;
+    position: relative;
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      right: -12px;
+      border: 12px solid transparent;
+      border-top: 12px solid #d7e6ff;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: -10px;
+      border: 12px solid transparent;
+      border-left: 12px solid #e9f2ff;
+      border-top: 12px solid #e9f2ff;
+    }
   }
   &_some-else-msg {
     background: #ffffff;
+    margin-right: auto;
+    position: relative;
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: -12px;
+      border: 12px solid transparent;
+      border-top: 12px solid #d7e6ff;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: -10px;
+      border: 12px solid transparent;
+      border-right: 12px solid #ffffff;
+      border-top: 12px solid #ffffff;
+    }
   }
 
   &__text {
