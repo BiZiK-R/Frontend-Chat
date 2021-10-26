@@ -21,4 +21,4 @@ const ChatMsgHeader: FC<ChatMsgHeaderProps> = ({ name, lastSeen }) => {
   );
 };
 
-export default ChatMsgHeader;
+export { ChatMsgHeader };

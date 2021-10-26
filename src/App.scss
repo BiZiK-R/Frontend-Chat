@@ -2,6 +2,8 @@
 
 @media screen and (max-width: 375px) {
   body {
+    font-family: Montserrat;
+    font-style: normal;
     font-size: 14px;
     font-weight: 500;
     line-height: 17px;
@@ -33,6 +35,18 @@
 }
 
 body {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  color: #333333;
+}
+
+input,
+p,
+span {
   font-family: Montserrat;
   font-size: 16px;
   font-style: normal;

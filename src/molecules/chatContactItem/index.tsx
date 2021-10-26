@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import IconProfile from "../../atoms/iconProfile";
+import { IconProfile } from "../../atoms/iconProfile";
 
 import "./chatContactItem.scss";
 
@@ -34,4 +34,4 @@ const ChatContactItem: FC<ChatContactItemProps> = ({
   );
 };
 
-export default ChatContactItem;
+export { ChatContactItem };

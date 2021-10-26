@@ -11,4 +11,4 @@ const Logo: FC<LogoProps> = ({ theme }) => {
   return <img className={cn("logo", `logo_${theme}`)} src="/image/logo.svg" />;
 };
 
-export default Logo;
+export { Logo };

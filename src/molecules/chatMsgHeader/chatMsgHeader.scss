@@ -12,10 +12,12 @@
   }
   &__description {
     display: flex;
-    color: #949494;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
+    & > * {
+      color: #949494;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+    }
     &__last-seen {
       margin: 0;
       margin-right: 8px;

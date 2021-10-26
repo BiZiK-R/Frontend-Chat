@@ -10,4 +10,4 @@ const Loading: FC = () => {
   );
 };
 
-export default Loading;
+export { Loading };

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import Logo from "../../atoms/logo";
-import FormLogin from "../../organisms/formLogin";
+import { Logo } from "../../atoms/logo";
+import { FormLogin } from "../../organisms/formLogin";
 
 import "./login.scss";
 
@@ -25,4 +25,4 @@ const Login: FC = () => {
   );
 };
 
-export default Login;
+export { Login };

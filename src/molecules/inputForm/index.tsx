@@ -1,6 +1,6 @@
 import React, { FC, useState, useCallback } from "react";
 import cn from "classnames";
-import Input from "../../atoms/Input";
+import { Input } from "../../atoms/Input";
 
 import "./inputForm.scss";
 
@@ -9,7 +9,7 @@ interface InputFormProps {
   description: string;
   value: string;
   required?: boolean;
-  type?: "text" | "password" | "email";
+  type: "text" | "password" | "email";
   validInput?: boolean;
   onChange: (value: string) => string;
   onBlur: () => void;
@@ -59,6 +59,7 @@ const InputForm: FC<InputFormProps> = ({
           required={required}
           type={type}
           placeholder={placeholder}
+          theme="form"
         />
       </label>
       {!validInput && (
@@ -68,4 +69,4 @@ const InputForm: FC<InputFormProps> = ({
   );
 };
 
-export default InputForm;
+export { InputForm };

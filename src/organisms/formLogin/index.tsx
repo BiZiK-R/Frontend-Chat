@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
-import InputForm from "../../molecules/inputForm";
-import Button from "../../atoms/Button";
+import { InputForm } from "../../molecules/inputForm";
+import { Button } from "../../atoms/Button";
 
 import "./formLogin.scss";
 
@@ -79,4 +79,4 @@ const FormLogin: FC = () => {
   );
 };
 
-export default FormLogin;
+export { FormLogin };

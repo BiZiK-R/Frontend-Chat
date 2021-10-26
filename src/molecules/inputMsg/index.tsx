@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Input from "../../atoms/Input";
+import { Input } from "../../atoms/Input";
 
 import "./inputMsg.scss";
 
@@ -18,10 +18,11 @@ const InputMsg: FC<LogoProps> = ({ value, onChange, placeholder }) => {
         type="text"
         onChange={onChange}
         placeholder={placeholder}
+        theme="chat"
       />
       <img className="input-msg__send-icon" src="/image/icon/sendIcon.svg" />
     </div>
   );
 };
 
-export default InputMsg;
+export { InputMsg };

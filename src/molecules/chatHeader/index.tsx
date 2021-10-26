@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import cn from "classnames";
 
 import "./chatHeader.scss";
-import Logo from "../../atoms/logo";
+import { Logo } from "../../atoms/logo";
 
 const ChatHeader: FC = () => {
   return (
@@ -18,4 +18,4 @@ const ChatHeader: FC = () => {
   );
 };
 
-export default ChatHeader;
+export { ChatHeader };

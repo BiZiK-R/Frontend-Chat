@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
-import Loading from "../../molecules/loading";
-import Message from "../../molecules/message";
-import Input from "../../atoms/Input";
-import InputMsg from "../../molecules/inputMsg";
-import ChatMsgHeader from "../../molecules/chatMsgHeader";
+import { Loading } from "../../molecules/loading";
+import { Message } from "../../molecules/message";
+import { Input } from "../../atoms/Input";
+import { InputMsg } from "../../molecules/inputMsg";
+import { ChatMsgHeader } from "../../molecules/chatMsgHeader";
 
 import "./chatMessage.scss";
 
@@ -36,4 +36,4 @@ const ChatMessage: FC = () => {
   );
 };
 
-export default ChatMessage;
+export { ChatMessage };

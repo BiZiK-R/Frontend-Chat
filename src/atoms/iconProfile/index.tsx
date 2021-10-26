@@ -17,4 +17,4 @@ const IconProfile: FC<IconProfileProps> = ({ theme, sex }) => {
   );
 };
 
-export default IconProfile;
+export { IconProfile };

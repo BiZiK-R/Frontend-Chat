@@ -21,4 +21,4 @@ const Button: FC<ButtonProps> = ({ children, type, disabled, onClick }) => {
   );
 };
 
-export default Button;
+export { Button };

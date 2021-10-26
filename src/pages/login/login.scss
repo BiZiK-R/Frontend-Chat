@@ -2,7 +2,8 @@
   display: flex;
   &__content {
     margin: 256px 121px 0 121px;
-    width: 474px;
+    width: 716px;
+    box-sizing: border-box;
     &__header {
       margin-bottom: 48px;
 
