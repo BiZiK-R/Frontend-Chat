@@ -35,7 +35,7 @@ const FormLogin: FC = () => {
       setValideInputPassword(true);
     }
   };
-  const onSubmitForm = (e: Event) => {
+  const onSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
   };
 

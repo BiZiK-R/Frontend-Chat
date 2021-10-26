@@ -1,17 +1,17 @@
-import React, { FC, MouseEventHandler } from "react";
+import React, { FC } from "react";
 import "./Button.scss";
 
 interface ButtonProps {
   children: React.ReactNode;
   type?: "submit" | "reset" | "button";
   disabled?: boolean;
-  onClick: () => void;
+  onClick: (e: React.FormEvent) => void;
 }
 
 const Button: FC<ButtonProps> = ({ children, type, disabled, onClick }) => {
   return (
     <button
-      onClick={onClick}
+      onClick={(e) => onClick(e)}
       disabled={disabled}
       type={type}
       className="button"

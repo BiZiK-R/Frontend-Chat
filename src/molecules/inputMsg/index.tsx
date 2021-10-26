@@ -6,7 +6,7 @@ import "./inputMsg.scss";
 interface LogoProps {
   value: string;
   placeholder: string;
-  onChange: (value: string) => string;
+  onChange: (value: string) => void;
 }
 
 const InputMsg: FC<LogoProps> = ({ value, onChange, placeholder }) => {

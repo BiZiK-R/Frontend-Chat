@@ -21,4 +21,4 @@ const Message: FC<MessageProps> = ({ children, yourMsg }) => {
   );
 };
 
-export default Message;
+export { Message };

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import cn from "classnames";
-import ChatContactItem from "../../molecules/chatContactItem";
+import { ChatContactItem } from "../../molecules/chatContactItem";
 
 import "./chatContactList.scss";
 
@@ -35,4 +35,4 @@ const ChatContactList: FC = () => {
   );
 };
 
-export default ChatContactList;
+export { ChatContactList };

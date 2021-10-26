@@ -12,7 +12,7 @@ interface InputProps {
   disabled?: boolean;
   tabIndex?: number;
   autocomplete?: boolean;
-  onChange?: (e: Event) => string;
+  onChange?: (value: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
   theme?: string;

@@ -11,7 +11,7 @@ interface InputFormProps {
   required?: boolean;
   type: "text" | "password" | "email";
   validInput?: boolean;
-  onChange: (value: string) => string;
+  onChange: (value: string) => void;
   onBlur: () => void;
   theme?: string;
 }
@@ -55,7 +55,6 @@ const InputForm: FC<InputFormProps> = ({
           onFocus={onFocus}
           onBlur={callbacks.onBlur}
           value={value}
-          className="input-form__wrapper__target"
           required={required}
           type={type}
           placeholder={placeholder}
