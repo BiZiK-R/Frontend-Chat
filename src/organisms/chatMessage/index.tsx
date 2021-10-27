@@ -6,50 +6,39 @@ import { InputMsg } from "../../molecules/inputMsg";
 import { ChatMsgHeader } from "../../molecules/chatMsgHeader";
 
 import "./chatMessage.scss";
+import { IDialogue } from "../../types/types";
 
-const ChatMessage: FC = () => {
+interface ChatMessageProps {
+  name: string;
+  lastSeen: string;
+  dialogue: IDialogue[];
+}
+
+const ChatMessage: FC<ChatMessageProps> = ({ name, lastSeen, dialogue }) => {
   const [valueInput, setValueInput] = useState("");
 
   const onChange = (value: string) => {
     setValueInput(value);
   };
 
+  const listMessage = dialogue.map((dialogue) => {
+    const { id, message, your } = dialogue;
+    return (
+      <Message key={id} yourMsg={your}>
+        {message}
+      </Message>
+    );
+  });
+
   return (
     <div className="chat-message">
-      <ChatMsgHeader name="Marina Joe" lastSeen="3 minutes ago" />
+      <ChatMsgHeader name={name} lastSeen={lastSeen} />
       <div className="chat-message__messages">
         {/* <Loading /> */}
         {/* <div className="chat-message__dialogue-no-selected">
           <p className="chat-message__dialogue-no-selected__text">Select a chat to stary messaging</p>
         </div> */}
-        <Message yourMsg={true}>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusanti
-        </Message>
-        <Message yourMsg={false}>
-          perspiciatis unde omnis iste natus error sit voluptatem accusanti
-        </Message>
-        <Message yourMsg={true}>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusanti
-        </Message>
-        <Message yourMsg={false}>
-          perspiciatis unde omnis iste natus error sit voluptatem accusanti
-        </Message>
-        <Message yourMsg={true}>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusanti
-        </Message>
-        <Message yourMsg={false}>
-          perspiciatis unde omnis iste natus error sit voluptatem accusanti
-        </Message>
-        <Message yourMsg={true}>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusanti
-        </Message>
-        <Message yourMsg={false}>
-          perspiciatis unde omnis iste natus error sit voluptatem accusanti
-        </Message>
+        {listMessage}
       </div>
       <InputMsg
         value={valueInput}

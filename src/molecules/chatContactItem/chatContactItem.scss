@@ -13,6 +13,7 @@
       line-height: 18px;
       margin: 0;
       margin-bottom: 4px;
+      color: #333333;
     }
     &__lastMsg {
       font-size: 14px;
@@ -20,13 +21,18 @@
       color: #949494;
       margin: 0;
       &__you {
+        font-size: 14px;
+        line-height: 17px;
         color: #5e93e7;
       }
     }
   }
-  &_select {
+}
+
+._select {
+  .chat-contact-item {
     background: #5c98f1;
-    .chat-contact-item__description {
+    &__description {
       &__name {
         color: #ffffff;
       }

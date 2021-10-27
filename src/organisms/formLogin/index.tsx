@@ -37,6 +37,12 @@ const FormLogin: FC = () => {
   };
   const onSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(window.location.href);
+    window.location.assign("http://localhost:3000/chat");
+    if (checkValid()) {
+      console.log(window.location.href);
+      window.location.assign("http://localhost:3000/chat");
+    }
   };
 
   const checkValid = () => {

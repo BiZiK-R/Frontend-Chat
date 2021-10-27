@@ -1,32 +1,47 @@
 .login {
   display: flex;
-  &__content {
-    margin: 256px 121px 0 121px;
-    width: 716px;
+  &__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //margin: 256px 121px 0 121px;
+    width: 50%;
+    min-width: 500px;
     box-sizing: border-box;
-    &__header {
-      margin-bottom: 48px;
+    &__content {
+      &__header {
+        margin-bottom: 48px;
 
-      &__title {
-        margin: 0;
-        margin-bottom: 24px;
-        ._color__blue {
-          color: #5e93e7;
+        &__title {
+          margin: 0;
+          margin-bottom: 24px;
+          font-weight: 800;
+          font-size: 42px;
+          line-height: 51px;
+          ._color__blue {
+            color: #5e93e7;
+            font-weight: 800;
+            font-size: 42px;
+            line-height: 51px;
+          }
+          ._color__light-blue {
+            color: #b3cdf8;
+            font-weight: 800;
+            font-size: 42px;
+            line-height: 51px;
+          }
         }
-        ._color__light-blue {
-          color: #b3cdf8;
+        &__description {
+          margin: 0;
         }
-      }
-      &__description {
-        margin: 0;
       }
     }
   }
-  &__backgraund {
+  &__right {
     background: #eff5ff no-repeat;
     background-image: url(../../assets/loginBackgraund.svg);
     background-size: cover;
-    width: calc(100% - 716px);
+    width: 50%;
     height: 100vh;
   }
 }

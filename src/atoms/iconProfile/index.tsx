@@ -4,15 +4,15 @@ import cn from "classnames";
 import "./iconProfile.scss";
 
 interface IconProfileProps {
-  sex: "Male" | "Female";
+  gender: "Male" | "Female";
   theme?: string;
 }
 
-const IconProfile: FC<IconProfileProps> = ({ theme, sex }) => {
+const IconProfile: FC<IconProfileProps> = ({ theme, gender }) => {
   return (
     <img
       className={cn("icon-profile", `icon-profile_${theme}`)}
-      src={`/image/icon/iconProfile${sex}.svg`}
+      src={`/image/icon/iconProfile${gender}.svg`}
     />
   );
 };

@@ -1,13 +1,15 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.scss";
-import { Login } from "./pages/login";
-import { Chat } from "./pages/chat";
+import { Routes } from "./routes";
 
 function App() {
   return (
-    <div className="App">
-      <Chat />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes />
+      </div>
+    </Router>
   );
 }
 
