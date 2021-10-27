@@ -45,3 +45,110 @@
     height: 100vh;
   }
 }
+
+@media screen and (max-width: 991px) {
+  .login {
+    flex-direction: column-reverse;
+    position: relative;
+    &__left {
+      height: 52vh;
+      width: 100%;
+      min-width: 375px;
+      margin: 0;
+
+      &__content {
+        height: 100%;
+        width: 458px;
+        margin: 0 14px;
+        &__header {
+          position: absolute;
+          top: calc(
+            48% - (172px + 24px)
+          ); // (top__block% - (height__header + margin__bottom)
+          &__title {
+            ._color__blue {
+            }
+            ._color__light-blue {
+            }
+          }
+          &__description {
+          }
+        }
+      }
+    }
+    &__right {
+      height: 48vh;
+      width: 100%;
+      border-radius: 0px 0px 16px 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .login {
+    flex-direction: column-reverse;
+    position: relative;
+
+    &__left {
+      height: 52vh;
+      width: 100%;
+      min-width: 375px;
+      margin: 0;
+
+      &__content {
+        height: 100%;
+        width: 348px;
+        margin: 0 14px;
+        &__header {
+          position: absolute;
+          top: calc(
+            48% - (130px + 24px)
+          ); // (top__block% - (height__header + margin__bottom)
+
+          &__title {
+            font-size: 27px;
+            line-height: 33px;
+            ._color__blue {
+              font-size: 27px;
+              line-height: 33px;
+            }
+            ._color__light-blue {
+              font-size: 27px;
+              line-height: 33px;
+            }
+          }
+          &__description {
+            font-size: 16px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+    &__right {
+      height: 48vh;
+      width: 100%;
+      border-radius: 0px 0px 16px 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .login {
+    &__left {
+      &__content {
+        &__header {
+          &__title {
+            ._color__blue {
+            }
+            ._color__light-blue {
+            }
+          }
+          &__description {
+          }
+        }
+      }
+    }
+    &__right {
+    }
+  }
+}

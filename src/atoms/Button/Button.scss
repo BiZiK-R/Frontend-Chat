@@ -38,3 +38,11 @@ $botton-colors: (
     background: botton-color("inactiv");
   }
 }
+
+@media screen and (max-width: 991px) {
+  .button {
+    position: absolute;
+    bottom: 24px;
+    width: 100%;
+  }
+}

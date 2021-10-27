@@ -57,26 +57,28 @@ const FormLogin: FC = () => {
   return (
     <div className="form-login">
       <form className="form-login__form">
-        <InputForm
-          onBlur={onBlurUsername}
-          onChange={onChangeUsername}
-          validInput={valideInputUsername}
-          value={valueInputUsername}
-          theme="username"
-          description="User name"
-          placeholder="Input user name"
-          type="text"
-        />
-        <InputForm
-          onBlur={onBlurPassword}
-          onChange={onChangePassword}
-          validInput={valideInputPassword}
-          value={valueInputPassword}
-          theme="password"
-          description="Password"
-          placeholder="Input password"
-          type="password"
-        />
+        <div className="form-login__form__inputs">
+          <InputForm
+            onBlur={onBlurUsername}
+            onChange={onChangeUsername}
+            validInput={valideInputUsername}
+            value={valueInputUsername}
+            theme="username"
+            description="User name"
+            placeholder="Input user name"
+            type="text"
+          />
+          <InputForm
+            onBlur={onBlurPassword}
+            onChange={onChangePassword}
+            validInput={valideInputPassword}
+            value={valueInputPassword}
+            theme="password"
+            description="Password"
+            placeholder="Input password"
+            type="password"
+          />
+        </div>
         <Button onClick={onSubmitForm} disabled={checkValid()} type="submit">
           Log in
         </Button>
