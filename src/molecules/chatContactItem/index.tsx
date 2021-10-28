@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 
 interface ChatContactItemProps {
   name: string;
+  gender: string;
   lastMsg: string;
   lastMsgYou: boolean;
   select?: boolean;
@@ -16,6 +17,7 @@ interface ChatContactItemProps {
 
 const ChatContactItem: FC<ChatContactItemProps> = ({
   name,
+  gender,
   lastMsg,
   lastMsgYou,
   select,
@@ -36,7 +38,7 @@ const ChatContactItem: FC<ChatContactItemProps> = ({
           select ? "chat-contact-item_select" : ""
         )}
       >
-        <IconProfile gender="Male" />
+        <IconProfile gender={gender} />
         <div className="chat-contact-item__description">
           <h3 className="chat-contact-item__description__name">{name}</h3>
           <p className="chat-contact-item__description__lastMsg">

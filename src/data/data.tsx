@@ -23,7 +23,7 @@ export const data = [
   {
     id: 2,
     name: "Marina Joe",
-    gender: "Male",
+    gender: "Female",
     lastSeen: "5 minutes ago",
     dialogue: [
       {

@@ -12,7 +12,7 @@ const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
   const createListContact = (data: IContact[] | undefined) => {
     if (typeof data !== "undefined") {
       return data.map((contact) => {
-        const { id, name } = contact;
+        const { id, name, gender } = contact;
         const lastMsg = contact.dialogue[0];
         //setDataFiling(true);
         return (
@@ -20,6 +20,7 @@ const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
             key={id}
             id={id}
             name={name}
+            gender={gender}
             lastMsg={lastMsg.message ? lastMsg.message : "file"}
             lastMsgYou={lastMsg.your}
           />

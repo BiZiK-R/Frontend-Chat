@@ -4,7 +4,7 @@ import cn from "classnames";
 import "./iconProfile.scss";
 
 interface IconProfileProps {
-  gender: "Male" | "Female";
+  gender: string;
   theme?: string;
 }
 
