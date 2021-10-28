@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Input } from "../../atoms/Input";
+import { Button } from "../../atoms/Button";
 
 import "./inputMsg.scss";
 
@@ -12,7 +13,9 @@ interface LogoProps {
 const InputMsg: FC<LogoProps> = ({ value, onChange, placeholder }) => {
   return (
     <div className="input-msg">
-      <img className="input-msg__clip-icon" src="/image/icon/clipIcon.svg" />
+      <Button>
+        <img className="input-msg__clip-icon" src="/image/icon/clipIcon.svg" />
+      </Button>
       <Input
         value={value}
         type="text"
@@ -20,7 +23,9 @@ const InputMsg: FC<LogoProps> = ({ value, onChange, placeholder }) => {
         placeholder={placeholder}
         theme="chat"
       />
-      <img className="input-msg__send-icon" src="/image/icon/sendIcon.svg" />
+      <Button>
+        <img className="input-msg__send-icon" src="/image/icon/sendIcon.svg" />
+      </Button>
     </div>
   );
 };

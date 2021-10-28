@@ -11,9 +11,10 @@ interface InputFormProps {
   required?: boolean;
   type: "text" | "password" | "email";
   validInput?: boolean;
+  errorText?: string;
+  theme?: string;
   onChange: (value: string) => void;
   onBlur: () => void;
-  theme?: string;
 }
 
 const InputForm: FC<InputFormProps> = ({
@@ -26,6 +27,7 @@ const InputForm: FC<InputFormProps> = ({
   description,
   onBlur,
   theme,
+  errorText,
 }) => {
   const [focusInput, setFocusInput] = useState(false);
 
@@ -61,9 +63,7 @@ const InputForm: FC<InputFormProps> = ({
           theme="form"
         />
       </label>
-      {!validInput && (
-        <div className="input-form_error__text">Something goes wrong</div>
-      )}
+      {!validInput && <div className="input-form_error__text">{errorText}</div>}
     </div>
   );
 };

@@ -10,6 +10,9 @@ const FormLogin: FC = () => {
   const [valideInputUsername, setValideInputUsername] = useState(true);
   const [valideInputPassword, setValideInputPassword] = useState(true);
 
+  const minName = 4,
+    minPassword = 6;
+
   const onChangeUsername = (value: string) => {
     setValueInputUsername(value);
     setValideInputUsername(true);
@@ -21,7 +24,7 @@ const FormLogin: FC = () => {
   };
 
   const onBlurUsername = () => {
-    if (valueInputUsername === "") {
+    if (valueInputUsername === "" || valueInputUsername.length < minName) {
       setValideInputUsername(false);
     } else {
       setValideInputUsername(true);
@@ -29,7 +32,7 @@ const FormLogin: FC = () => {
   };
 
   const onBlurPassword = () => {
-    if (valueInputPassword === "") {
+    if (valueInputPassword === "" || valueInputPassword.length < minPassword) {
       setValideInputPassword(false);
     } else {
       setValideInputPassword(true);
@@ -37,12 +40,8 @@ const FormLogin: FC = () => {
   };
   const onSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(window.location.href);
-    window.location.assign("http://localhost:3000/chat");
-    if (checkValid()) {
-      console.log(window.location.href);
-      window.location.assign("http://localhost:3000/chat");
-    }
+    console.log(window.location.href.slice(0, -6));
+    window.location.assign(window.location.href.slice(0, -6) + "/chat");
   };
 
   const checkValid = () => {
@@ -50,8 +49,16 @@ const FormLogin: FC = () => {
       !valueInputUsername ||
       !valueInputPassword ||
       !valideInputUsername ||
-      !valideInputPassword
+      !valideInputPassword ||
+      !(valueInputUsername.length >= minName) ||
+      !(valueInputPassword.length >= minPassword)
     );
+  };
+
+  const checkError = (valueInput: string, minLength: number) => {
+    if (valueInput === "") return "Please fill in this field";
+    if (valueInput.length < minLength) return "Need MORE characters!";
+    return "";
   };
 
   return (
@@ -67,6 +74,7 @@ const FormLogin: FC = () => {
             description="User name"
             placeholder="Input user name"
             type="text"
+            errorText={checkError(valueInputUsername, minName)}
           />
           <InputForm
             onBlur={onBlurPassword}
@@ -77,9 +85,15 @@ const FormLogin: FC = () => {
             description="Password"
             placeholder="Input password"
             type="password"
+            errorText={checkError(valueInputPassword, minPassword)}
           />
         </div>
-        <Button onClick={onSubmitForm} disabled={checkValid()} type="submit">
+        <Button
+          theme="submit-auth"
+          onClick={onSubmitForm}
+          disabled={checkValid()}
+          type="submit"
+        >
           Log in
         </Button>
       </form>
