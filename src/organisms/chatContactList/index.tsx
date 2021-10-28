@@ -20,7 +20,7 @@ const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
             key={id}
             id={id}
             name={name}
-            lastMsg={lastMsg.message}
+            lastMsg={lastMsg.message ? lastMsg.message : "file"}
             lastMsgYou={lastMsg.your}
           />
         );

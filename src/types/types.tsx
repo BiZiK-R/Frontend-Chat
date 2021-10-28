@@ -1,9 +1,14 @@
-export interface IDialogue {
-  your: boolean;
-  message: string;
-  id: number;
+export interface IFile {
+  name: string;
+  size: string;
 }
 
+export interface IDialogue {
+  your: boolean;
+  message?: string;
+  id: number;
+  file?: IFile;
+}
 export interface IContact {
   id: number;
   name: string;

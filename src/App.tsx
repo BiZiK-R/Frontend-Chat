@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.scss";
 import { Routes } from "./routes";
 
-function App() {
+const App: FC = () => {
   return (
     <Router>
       <div className="App">
@@ -11,6 +11,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

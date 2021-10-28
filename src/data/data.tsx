@@ -10,6 +10,14 @@ export const data = [
         message: "Hey!",
         id: 1,
       },
+      {
+        your: true,
+        id: 2,
+        file: {
+          name: "File_for_exampl0011232555234.doc",
+          size: "4.2 MB",
+        },
+      },
     ],
   },
   {

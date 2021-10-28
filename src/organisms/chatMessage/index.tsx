@@ -3,6 +3,7 @@ import { Loading } from "../../molecules/loading";
 import { Message } from "../../molecules/message";
 import { InputMsg } from "../../molecules/inputMsg";
 import { ChatMsgHeader } from "../../molecules/chatMsgHeader";
+import { FileMsg } from "../../molecules/fileMsg";
 
 import "./chatMessage.scss";
 import { IDialogue } from "../../types/types";
@@ -31,8 +32,12 @@ const ChatMessage: FC<ChatMessageProps> = ({
   const createDialogue = (dialogue: IDialogue[] | undefined) => {
     if (typeof dialogue !== "undefined") {
       return dialogue.map((dialogue) => {
-        const { id, message, your } = dialogue;
-        return (
+        const { id, message, your, file } = dialogue;
+        return file ? (
+          <Message key={id} yourMsg={your}>
+            <FileMsg file={file} />
+          </Message>
+        ) : (
           <Message key={id} yourMsg={your}>
             {message}
           </Message>
