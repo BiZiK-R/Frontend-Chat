@@ -7,7 +7,7 @@ interface ChatMsgHeaderProps {
   lastSeen: string;
 }
 
-const ChatMsgHeader: FC<ChatMsgHeaderProps> = ({ name, lastSeen }) => {
+export const ChatMsgHeader: FC<ChatMsgHeaderProps> = ({ name, lastSeen }) => {
   return (
     <div className="chat-msg-header">
       <h3 className="chat-msg-header__name">{name}</h3>
@@ -18,5 +18,3 @@ const ChatMsgHeader: FC<ChatMsgHeaderProps> = ({ name, lastSeen }) => {
     </div>
   );
 };
-
-export { ChatMsgHeader };

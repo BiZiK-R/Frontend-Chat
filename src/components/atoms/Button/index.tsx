@@ -10,7 +10,7 @@ interface ButtonProps {
   theme?: string;
 }
 
-const Button: FC<ButtonProps> = ({
+export const Button: FC<ButtonProps> = ({
   children,
   type,
   disabled,
@@ -30,5 +30,3 @@ const Button: FC<ButtonProps> = ({
     </button>
   );
 };
-
-export { Button };

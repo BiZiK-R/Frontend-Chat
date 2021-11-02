@@ -8,7 +8,7 @@ interface IconProfileProps {
   theme?: string;
 }
 
-const IconProfile: FC<IconProfileProps> = ({ theme, gender }) => {
+export const IconProfile: FC<IconProfileProps> = ({ theme, gender }) => {
   return (
     <img
       className={cn("icon-profile", `icon-profile_${theme}`)}
@@ -16,5 +16,3 @@ const IconProfile: FC<IconProfileProps> = ({ theme, gender }) => {
     />
   );
 };
-
-export { IconProfile };

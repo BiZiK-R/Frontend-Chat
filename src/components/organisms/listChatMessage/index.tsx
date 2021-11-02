@@ -8,7 +8,7 @@ interface ListChatMessageProps {
   data: IContact[] | undefined;
 }
 
-const ListChatMessage: FC<ListChatMessageProps> = ({ data }) => {
+export const ListChatMessage: FC<ListChatMessageProps> = ({ data }) => {
   const createListChatMessage = (data: IContact[] | undefined) => {
     if (typeof data !== "undefined") {
       return data.map((contact) => {
@@ -47,5 +47,3 @@ const ListChatMessage: FC<ListChatMessageProps> = ({ data }) => {
     </>
   );
 };
-
-export { ListChatMessage };

@@ -10,7 +10,7 @@ interface LogoProps {
   onChange: (value: string) => void;
 }
 
-const InputMsg: FC<LogoProps> = ({ value, onChange, placeholder }) => {
+export const InputMsg: FC<LogoProps> = ({ value, onChange, placeholder }) => {
   return (
     <div className="input-msg">
       <Button>
@@ -29,5 +29,3 @@ const InputMsg: FC<LogoProps> = ({ value, onChange, placeholder }) => {
     </div>
   );
 };
-
-export { InputMsg };

@@ -18,7 +18,7 @@ interface InputProps {
   theme?: string;
 }
 
-const Input: FC<InputProps> = ({
+export const Input: FC<InputProps> = ({
   value,
   type = "text",
   placeholder,
@@ -73,5 +73,3 @@ const Input: FC<InputProps> = ({
     </div>
   );
 };
-
-export { Input };

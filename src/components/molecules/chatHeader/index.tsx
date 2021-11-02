@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import "./chatHeader.scss";
 import { Logo } from "../../atoms/logo";
 
-const ChatHeader: FC = () => {
+export const ChatHeader: FC = () => {
   return (
     <div className="chat-header">
       <Logo theme="chatHeader" />
@@ -16,5 +16,3 @@ const ChatHeader: FC = () => {
     </div>
   );
 };
-
-export { ChatHeader };

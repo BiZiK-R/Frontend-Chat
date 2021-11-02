@@ -8,7 +8,7 @@ interface MessageProps {
   yourMsg: boolean;
 }
 
-const Message: FC<MessageProps> = ({ children, yourMsg }) => {
+export const Message: FC<MessageProps> = ({ children, yourMsg }) => {
   return (
     <div
       className={cn(
@@ -20,5 +20,3 @@ const Message: FC<MessageProps> = ({ children, yourMsg }) => {
     </div>
   );
 };
-
-export { Message };

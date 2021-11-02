@@ -15,7 +15,7 @@ interface ChatContactItemProps {
   id: number;
 }
 
-const ChatContactItem: FC<ChatContactItemProps> = ({
+export const ChatContactItem: FC<ChatContactItemProps> = ({
   name,
   gender,
   lastMsg,
@@ -54,5 +54,3 @@ const ChatContactItem: FC<ChatContactItemProps> = ({
     </NavLink>
   );
 };
-
-export { ChatContactItem };

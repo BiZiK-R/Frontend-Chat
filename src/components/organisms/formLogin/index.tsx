@@ -4,7 +4,7 @@ import { Button } from "../../atoms/Button";
 
 import "./formLogin.scss";
 
-const FormLogin: FC = () => {
+export const FormLogin: FC = () => {
   const [valueInputUsername, setValueInputUsername] = useState("");
   const [valueInputPassword, setValueInputPassword] = useState("");
   const [valideInputUsername, setValideInputUsername] = useState(true);
@@ -100,5 +100,3 @@ const FormLogin: FC = () => {
     </div>
   );
 };
-
-export { FormLogin };

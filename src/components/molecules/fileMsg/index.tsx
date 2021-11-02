@@ -7,7 +7,7 @@ interface FileMsgProps {
   file: IFile;
 }
 
-const FileMsg: FC<FileMsgProps> = ({ file }) => {
+export const FileMsg: FC<FileMsgProps> = ({ file }) => {
   return (
     <div className="file-msg">
       <img className="file-msg__icon" src="/image/fileIcon.svg" />
@@ -18,5 +18,3 @@ const FileMsg: FC<FileMsgProps> = ({ file }) => {
     </div>
   );
 };
-
-export { FileMsg };

@@ -6,7 +6,7 @@ import { data, dataUndf } from "../../data/data";
 
 import "./chat.scss";
 
-const Chat: FC = () => {
+export const Chat: FC = () => {
   return (
     <div className="chat">
       <ChatHeader />
@@ -17,5 +17,3 @@ const Chat: FC = () => {
     </div>
   );
 };
-
-export { Chat };

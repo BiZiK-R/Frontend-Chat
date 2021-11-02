@@ -8,7 +8,7 @@ interface ChatContactListProps {
   data: IContact[] | undefined;
 }
 
-const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
+export const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
   const createListContact = (data: IContact[] | undefined) => {
     if (typeof data !== "undefined") {
       return data.map((contact) => {
@@ -44,5 +44,3 @@ const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
 
   return <div className="chat-list-contact">{listContactItem}</div>;
 };
-
-export { ChatContactList };

@@ -16,7 +16,7 @@ interface ChatMessageProps {
   noContact?: boolean;
 }
 
-const ChatMessage: FC<ChatMessageProps> = ({
+export const ChatMessage: FC<ChatMessageProps> = ({
   name,
   lastSeen,
   dialogue,
@@ -81,5 +81,3 @@ const ChatMessage: FC<ChatMessageProps> = ({
     </div>
   );
 };
-
-export { ChatMessage };

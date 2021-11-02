@@ -4,7 +4,7 @@ import { FormLogin } from "../../components/organisms/formLogin";
 
 import "./login.scss";
 
-const Login: FC = () => {
+export const Login: FC = () => {
   return (
     <div className="login">
       <div className="login__left">
@@ -26,5 +26,3 @@ const Login: FC = () => {
     </div>
   );
 };
-
-export { Login };

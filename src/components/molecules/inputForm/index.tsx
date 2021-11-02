@@ -17,7 +17,7 @@ interface InputFormProps {
   onBlur: () => void;
 }
 
-const InputForm: FC<InputFormProps> = ({
+export const InputForm: FC<InputFormProps> = ({
   placeholder,
   required,
   value,
@@ -67,5 +67,3 @@ const InputForm: FC<InputFormProps> = ({
     </div>
   );
 };
-
-export { InputForm };
