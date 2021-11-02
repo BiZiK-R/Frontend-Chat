@@ -7,35 +7,34 @@
     width: 50%;
     min-width: 500px;
     box-sizing: border-box;
-    &__content {
-      &__header {
-        margin-bottom: 48px;
+  }
+  &__header {
+    margin-bottom: 48px;
 
-        &__title {
-          margin: 0;
-          margin-bottom: 24px;
-          font-weight: 800;
-          font-size: 42px;
-          line-height: 51px;
-          ._color__blue {
-            color: #5e93e7;
-            font-weight: 800;
-            font-size: 42px;
-            line-height: 51px;
-          }
-          ._color__light-blue {
-            color: #b3cdf8;
-            font-weight: 800;
-            font-size: 42px;
-            line-height: 51px;
-          }
-        }
-        &__description {
-          margin: 0;
-        }
+    &-title {
+      margin: 0;
+      margin-bottom: 24px;
+      font-weight: 800;
+      font-size: 42px;
+      line-height: 51px;
+      ._color__blue {
+        color: #5e93e7;
+        font-weight: 800;
+        font-size: 42px;
+        line-height: 51px;
+      }
+      ._color__light-blue {
+        color: #b3cdf8;
+        font-weight: 800;
+        font-size: 42px;
+        line-height: 51px;
       }
     }
+    &-description {
+      margin: 0;
+    }
   }
+
   &__right {
     background: #eff5ff no-repeat;
     background-image: url(../../assets/loginBackgraund.svg);
@@ -59,14 +58,16 @@
         height: 100%;
         width: 458px;
         margin: 0 14px;
-        &__header {
-          position: absolute;
-          top: calc(
-            48% - (172px + 24px)
-          ); // (top__block% - (height__header + margin__bottom)
-        }
       }
     }
+
+    &__header {
+      position: absolute;
+      top: calc(
+        48% - (172px + 24px)
+      ); // (top__block% - (height__header + margin__bottom)
+    }
+
     &__right {
       height: 48vh;
       width: 100%;
@@ -86,35 +87,38 @@
       min-width: 375px;
       margin: 0;
 
-      &__content {
+      &-content {
         height: 100%;
         width: 348px;
         margin: 0 14px;
-        &__header {
-          position: absolute;
-          top: calc(
-            48% - (130px + 24px)
-          ); // (top__block% - (height__header + margin__bottom)
-
-          &__title {
-            font-size: 27px;
-            line-height: 33px;
-            ._color__blue {
-              font-size: 27px;
-              line-height: 33px;
-            }
-            ._color__light-blue {
-              font-size: 27px;
-              line-height: 33px;
-            }
-          }
-          &__description {
-            font-size: 16px;
-            line-height: 20px;
-          }
-        }
       }
     }
+
+    &__header {
+      position: absolute;
+      top: calc(
+        48% - (130px + 24px)
+      ); // (top__block% - (height__header + margin__bottom)
+
+      &-title {
+        font-size: 27px;
+        line-height: 33px;
+        ._color__blue {
+          font-size: 27px;
+          line-height: 33px;
+        }
+        ._color__light-blue {
+          font-size: 27px;
+          line-height: 33px;
+        }
+      }
+
+      &-description {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+
     &__right {
       height: 48vh;
       width: 100%;

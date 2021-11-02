@@ -8,14 +8,14 @@ const Login: FC = () => {
   return (
     <div className="login">
       <div className="login__left">
-        <div className="login__left__content">
-          <div className="login__left__content__header">
+        <div className="login__left-content">
+          <div className="login__header">
             <Logo theme="login" />
-            <h1 className="login__left__content__header__title">
-              Wellcome to <span className="_color__blue">Chatty</span>
-              <span className="_color__light-blue">!</span>
+            <h1 className="login__header-title">
+              Wellcome to <span className="_color-blue">Chatty</span>
+              <span className="_color-light-blue">!</span>
             </h1>
-            <h2 className="login__left__content__header__description">
+            <h2 className="login__header-description">
               Please, autorize yourself
             </h2>
           </div>

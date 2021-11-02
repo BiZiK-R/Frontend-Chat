@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { ChatContactItem } from "../../molecules/chatContactItem";
-import { IContact } from "../../types/types";
+import { IContact } from "../../../types/types";
 
 import "./chatContactList.scss";
 

@@ -6,7 +6,7 @@ import { ChatMsgHeader } from "../../molecules/chatMsgHeader";
 import { FileMsg } from "../../molecules/fileMsg";
 
 import "./chatMessage.scss";
-import { IDialogue } from "../../types/types";
+import { IDialogue } from "../../../types/types";
 
 interface ChatMessageProps {
   name?: string;
