@@ -10,10 +10,10 @@ interface ChatContactListProps {
 
 export const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
   const createListContact = (data: IContact[] | undefined) => {
-    if (typeof data !== "undefined") {
+    if (typeof data !== "undefined" && data.length > 0) {
       return data.map((contact) => {
         const { id, name, gender } = contact;
-        const lastMsg = contact.dialogue[0];
+        const lastMsg = contact.dialogue ? contact.dialogue[0] : undefined;
         //setDataFiling(true);
         return (
           <ChatContactItem
@@ -21,8 +21,10 @@ export const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
             id={id}
             name={name}
             gender={gender}
-            lastMsg={lastMsg.message ? lastMsg.message : "file"}
-            lastMsgYou={lastMsg.your}
+            lastMsg={
+              lastMsg ? (lastMsg.message ? lastMsg.message : "file") : ""
+            }
+            lastMsgYou={lastMsg ? lastMsg.your : false}
           />
         );
       });

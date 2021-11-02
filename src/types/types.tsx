@@ -14,5 +14,5 @@ export interface IContact {
   name: string;
   gender: string;
   lastSeen: string;
-  dialogue: IDialogue[];
+  dialogue: IDialogue[] | [];
 }

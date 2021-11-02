@@ -101,6 +101,13 @@ export const DATA = [
       },
     ],
   },
+  {
+    id: 5,
+    name: "Konstantin Konstantinopolski",
+    gender: "Male",
+    lastSeen: "10 minutes ago",
+    dialogue: [],
+  },
 ];
 
 export const DATAUNDF = undefined;
