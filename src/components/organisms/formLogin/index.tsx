@@ -1,17 +1,19 @@
 import React, { FC, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { InputForm } from "../../molecules/inputForm";
 import { Button } from "../../atoms/Button";
 
 import "./formLogin.scss";
+
+const MINNAME = 4,
+  MINPASSWORD = 6;
 
 export const FormLogin: FC = () => {
   const [valueInputUsername, setValueInputUsername] = useState("");
   const [valueInputPassword, setValueInputPassword] = useState("");
   const [valideInputUsername, setValideInputUsername] = useState(true);
   const [valideInputPassword, setValideInputPassword] = useState(true);
-
-  const minName = 4,
-    minPassword = 6;
+  const history = useHistory();
 
   const onChangeUsername = (value: string) => {
     setValueInputUsername(value);
@@ -24,7 +26,7 @@ export const FormLogin: FC = () => {
   };
 
   const onBlurUsername = () => {
-    if (valueInputUsername === "" || valueInputUsername.length < minName) {
+    if (valueInputUsername === "" || valueInputUsername.length < MINNAME) {
       setValideInputUsername(false);
     } else {
       setValideInputUsername(true);
@@ -32,7 +34,7 @@ export const FormLogin: FC = () => {
   };
 
   const onBlurPassword = () => {
-    if (valueInputPassword === "" || valueInputPassword.length < minPassword) {
+    if (valueInputPassword === "" || valueInputPassword.length < MINPASSWORD) {
       setValideInputPassword(false);
     } else {
       setValideInputPassword(true);
@@ -40,8 +42,7 @@ export const FormLogin: FC = () => {
   };
   const onSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(window.location.href.slice(0, -6));
-    window.location.assign(window.location.href.slice(0, -6) + "/chat");
+    history.push("/chat");
   };
 
   const checkValid = () => {
@@ -50,8 +51,8 @@ export const FormLogin: FC = () => {
       !valueInputPassword ||
       !valideInputUsername ||
       !valideInputPassword ||
-      !(valueInputUsername.length >= minName) ||
-      !(valueInputPassword.length >= minPassword)
+      !(valueInputUsername.length >= MINNAME) ||
+      !(valueInputPassword.length >= MINPASSWORD)
     );
   };
 
@@ -74,7 +75,7 @@ export const FormLogin: FC = () => {
             description="User name"
             placeholder="Input user name"
             type="text"
-            errorText={checkError(valueInputUsername, minName)}
+            errorText={checkError(valueInputUsername, MINNAME)}
           />
           <InputForm
             onBlur={onBlurPassword}
@@ -85,7 +86,7 @@ export const FormLogin: FC = () => {
             description="Password"
             placeholder="Input password"
             type="password"
-            errorText={checkError(valueInputPassword, minPassword)}
+            errorText={checkError(valueInputPassword, MINPASSWORD)}
           />
         </div>
         <Button

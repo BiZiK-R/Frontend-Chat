@@ -1,4 +1,4 @@
-export const data = [
+export const DATA = [
   {
     id: 1,
     name: "Konstantin Konstantinopolski",
@@ -103,4 +103,4 @@ export const data = [
   },
 ];
 
-export const dataUndf = undefined;
+export const DATAUNDF = undefined;

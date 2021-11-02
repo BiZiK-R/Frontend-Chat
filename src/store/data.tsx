@@ -1,10 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import { data } from "../data/data";
 import { IContact, IDialogue } from "../types/types";
 
 export class Data {
-  contacts = data;
-
   constructor() {
     makeAutoObservable(this);
   }
