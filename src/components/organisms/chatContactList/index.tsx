@@ -30,10 +30,10 @@ const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
     return (
       <div className="chat-list-contact__no-contact">
         <img
-          className="chat-list-contact__no-contact__img"
+          className="chat-list-contact__no-contact-img"
           src="/image/noContact.svg"
         />
-        <p className="chat-list-contact__no-contact__text">
+        <p className="chat-list-contact__no-contact-text">
           There is no other users yet
         </p>
       </div>

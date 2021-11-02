@@ -30,13 +30,6 @@ $input-colors: (
     border-radius: 8px;
     border: 1px solid input-color("initial");
 
-    &__target {
-      outline: none;
-      border: none;
-      box-sizing: border-box;
-      width: 100%;
-      height: 100%;
-    }
     &_typing {
       border-color: input-color("typing");
     }

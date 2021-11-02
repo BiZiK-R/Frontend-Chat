@@ -8,23 +8,23 @@
   cursor: pointer;
   &__description {
     margin-left: 12px;
-    &__name {
-      font-size: 15px;
-      line-height: 18px;
-      margin: 0;
-      margin-bottom: 4px;
-      color: #333333;
-    }
-    &__lastMsg {
+  }
+  &__name {
+    font-size: 15px;
+    line-height: 18px;
+    margin: 0;
+    margin-bottom: 4px;
+    color: #333333;
+  }
+  &__lastMsg {
+    font-size: 14px;
+    line-height: 17px;
+    color: #949494;
+    margin: 0;
+    &_you {
       font-size: 14px;
       line-height: 17px;
-      color: #949494;
-      margin: 0;
-      &__you {
-        font-size: 14px;
-        line-height: 17px;
-        color: #5e93e7;
-      }
+      color: #5e93e7;
     }
   }
 }
@@ -32,15 +32,13 @@
 ._select {
   .chat-contact-item {
     background: #5c98f1;
-    &__description {
-      &__name {
+    &__name {
+      color: #ffffff;
+    }
+    &__lastMsg {
+      color: #ffffff;
+      &_you {
         color: #ffffff;
-      }
-      &__lastMsg {
-        color: #ffffff;
-        &__you {
-          color: #ffffff;
-        }
       }
     }
   }

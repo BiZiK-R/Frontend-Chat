@@ -64,7 +64,7 @@ const FormLogin: FC = () => {
   return (
     <div className="form-login">
       <form className="form-login__form">
-        <div className="form-login__form__inputs">
+        <div className="form-login__inputs">
           <InputForm
             onBlur={onBlurUsername}
             onChange={onChangeUsername}

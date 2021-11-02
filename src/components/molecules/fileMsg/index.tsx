@@ -12,8 +12,8 @@ const FileMsg: FC<FileMsgProps> = ({ file }) => {
     <div className="file-msg">
       <img className="file-msg__icon" src="/image/fileIcon.svg" />
       <div className="file-msg__description">
-        <p className="file-msg__description__name">{file.name}</p>
-        <p className="file-msg__description__size">{file.size}</p>
+        <p className="file-msg__name">{file.name}</p>
+        <p className="file-msg__size">{file.size}</p>
       </div>
     </div>
   );

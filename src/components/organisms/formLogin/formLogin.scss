@@ -4,11 +4,10 @@
   &__form {
     height: 100%;
     width: 354px;
-
-    &__inputs {
-      //max-width: 500px;
-      width: 100%;
-    }
+  }
+  &__inputs {
+    //max-width: 500px;
+    width: 100%;
   }
 }
 
@@ -24,11 +23,10 @@
       position: relative;
       padding-top: 75px;
       box-sizing: border-box;
-
-      &__inputs {
-        //max-width: 500px;
-        width: 100%;
-      }
+    }
+    &__inputs {
+      //max-width: 500px;
+      width: 100%;
     }
   }
 }

@@ -46,7 +46,7 @@ const ChatMessage: FC<ChatMessageProps> = ({
     }
     return (
       <div className="chat-message__dialogue-no-selected">
-        <p className="chat-message__dialogue-no-selected__text">
+        <p className="chat-message__dialogue-no-selected-text">
           Select a chat to stary messaging
         </p>
       </div>

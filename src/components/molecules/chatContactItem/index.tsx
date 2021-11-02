@@ -40,12 +40,10 @@ const ChatContactItem: FC<ChatContactItemProps> = ({
       >
         <IconProfile gender={gender} />
         <div className="chat-contact-item__description">
-          <h3 className="chat-contact-item__description__name">{name}</h3>
-          <p className="chat-contact-item__description__lastMsg">
+          <h3 className="chat-contact-item__name">{name}</h3>
+          <p className="chat-contact-item__lastMsg">
             {lastMsgYou ? (
-              <span className="chat-contact-item__description__lastMsg__you">
-                You:{" "}
-              </span>
+              <span className="chat-contact-item__lastMsg_you">You: </span>
             ) : (
               ""
             )}
