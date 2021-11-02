@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { Logo } from "../../atoms/logo";
-import { FormLogin } from "../../organisms/formLogin";
+import { Logo } from "../../components/atoms/logo";
+import { FormLogin } from "../../components/organisms/formLogin";
 
 import "./login.scss";
 

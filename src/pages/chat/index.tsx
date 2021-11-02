@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { ChatHeader } from "../../molecules/chatHeader";
-import { ChatContactList } from "../../organisms/chatContactList";
-import { ListChatMessage } from "../../organisms/listChatMessage";
+import { ChatHeader } from "../../components/molecules/chatHeader";
+import { ChatContactList } from "../../components/organisms/chatContactList";
+import { ListChatMessage } from "../../components/organisms/listChatMessage";
 import { data, dataUndf } from "../../data/data";
 
 import "./chat.scss";

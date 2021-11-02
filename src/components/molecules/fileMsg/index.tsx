@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IFile } from "../../types/types";
+import { IFile } from "../../../types/types";
 
 import "./fileMsg.scss";
 

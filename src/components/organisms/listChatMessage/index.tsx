@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { Route } from "react-router";
 import { ChatMessage } from "../../organisms/chatMessage";
-import { IContact } from "../../types/types";
-import { SCREENS } from "../../routes/endpoints";
+import { IContact } from "../../../types/types";
+import { SCREENS } from "../../../routes/endpoints";
 
 interface ListChatMessageProps {
   data: IContact[] | undefined;

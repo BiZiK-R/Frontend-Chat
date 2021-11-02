@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { IconProfile } from "../../atoms/iconProfile";
 import cn from "classnames";
-import { SCREENS } from "../../routes/endpoints";
+import { SCREENS } from "../../../routes/endpoints";
 
 import "./chatContactItem.scss";
 import { NavLink } from "react-router-dom";
