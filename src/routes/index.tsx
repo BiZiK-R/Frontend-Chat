@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { SCREENS } from "./endpoints";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { Login } from "../pages/login";
-import { Chat } from "../pages/chat";
+import { Login } from "../components/pages/login";
+import { Chat } from "../components/pages/chat";
 
 export const Routes: FC = () => {
   return (
