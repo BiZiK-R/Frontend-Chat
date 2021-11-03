@@ -16,7 +16,7 @@ export const Message: FC<MessageProps> = ({ children, yourMsg }) => {
         yourMsg ? "message_your-msg" : "message_some-else-msg"
       )}
     >
-      <p className="message__text">{children}</p>
+      <div className="message__text">{children}</div>
     </div>
   );
 };

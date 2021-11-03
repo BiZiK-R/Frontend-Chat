@@ -57,7 +57,7 @@ export const Input: FC<InputProps> = ({
   return (
     <div className="input">
       <input
-        className={cn("input__input", `input__input_${theme}`)}
+        className={cn("input__input", theme ? `input__input_${theme}` : "")}
         value={value}
         type={type}
         placeholder={placeholder}

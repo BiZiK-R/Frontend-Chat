@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
-import { ChatHeader } from "../../components/molecules/chatHeader";
-import { ChatContactList } from "../../components/organisms/chatContactList";
-import { ChatMessage } from "../../components/organisms/chatMessage";
+import { ChatHeader } from "../../molecules/chatHeader";
+import { ChatContactList } from "../../organisms/chatContactList";
+import { ChatMessage } from "../../organisms/chatMessage";
 import { useLocation } from "react-router-dom";
-import { DATA, DATAUNDF } from "../../data/data";
+import { DATA, DATAUNDF } from "../../../data/data";
 
 import "./chat.scss";
 
@@ -32,8 +32,6 @@ export const Chat: FC = () => {
   };
 
   const displayDialogue = getDialogue(idContact);
-
-  //setTimeout(() => setLoading(false), 2000);
 
   return (
     <div className="chat">

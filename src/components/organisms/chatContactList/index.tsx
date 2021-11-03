@@ -11,9 +11,8 @@ interface ChatContactListProps {
 export const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
   const createListContact = (data: IContact[] | undefined) => {
     if (typeof data !== "undefined" && data.length > 0) {
-      return data.map((contact) => {
-        const { id, name, gender } = contact;
-        const lastMsg = contact.dialogue ? contact.dialogue[0] : undefined;
+      return data.map(({ id, name, gender, dialogue }) => {
+        const lastMsg = dialogue ? dialogue[0] : undefined;
         //setDataFiling(true);
         return (
           <ChatContactItem

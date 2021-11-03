@@ -42,10 +42,8 @@ export const ChatContactItem: FC<ChatContactItemProps> = ({
         <div className="chat-contact-item__description">
           <h3 className="chat-contact-item__name">{name}</h3>
           <p className="chat-contact-item__lastMsg">
-            {lastMsgYou ? (
+            {lastMsgYou && (
               <span className="chat-contact-item__lastMsg_you">You: </span>
-            ) : (
-              ""
             )}
             {lastMsgShort(lastMsg)}
           </p>

@@ -56,10 +56,10 @@ export const ChatMessage: FC<ChatMessageProps> = ({
   const listMessage = createDialogue(dialogue);
 
   const chatMsgHeader = typeof name == "string" &&
-    typeof lastSeen == "string" &&
+    typeof lastSeen === "string" &&
     !loading && <ChatMsgHeader name={name} lastSeen={lastSeen} />;
   const inputMsg = typeof name == "string" &&
-    typeof lastSeen == "string" &&
+    typeof lastSeen === "string" &&
     !loading && (
       <InputMsg
         value={valueInput}
