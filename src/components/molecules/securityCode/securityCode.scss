@@ -1,0 +1,12 @@
+.security-code {
+  display: flex;
+  width: calc(100% + 28px);
+  & > * {
+    margin-right: 12px;
+  }
+  & > *:last-child {
+    align-self: center;
+    margin-right: 0;
+    margin-top: -27px;
+  }
+}

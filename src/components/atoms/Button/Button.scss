@@ -16,18 +16,16 @@ $botton-colors: (
   padding: 0;
   margin: 0;
   background: inherit;
+  cursor: pointer;
 
   &_submit-auth {
-    width: 233px;
+    width: 100%;
     height: 56px;
     font-size: 15px;
-
-    font-family: Montserrat;
-    font-size: 15px;
-    font-style: normal;
     font-weight: 500;
     line-height: 23px;
     letter-spacing: 0em;
+    margin-right: 12px;
 
     background: botton-color("regular");
     border-radius: 8px;
@@ -42,13 +40,30 @@ $botton-colors: (
       background: botton-color("inactiv");
     }
   }
+  &_nav-auth {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 23px;
+    height: 56px;
+    width: 100%;
+
+    color: #5c98f1;
+    border: 1px solid #5c98f1;
+    box-sizing: border-box;
+    border-radius: 8px;
+  }
 }
 
 @media screen and (max-width: 991px) {
   .button {
     &_submit-auth {
       position: absolute;
-      bottom: 24px;
+      bottom: 78px;
+      width: 100%;
+    }
+    &_nav-auth {
+      position: absolute;
+      bottom: 14px;
       width: 100%;
     }
   }

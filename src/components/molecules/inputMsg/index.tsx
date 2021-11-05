@@ -7,7 +7,7 @@ import "./inputMsg.scss";
 interface LogoProps {
   value: string;
   placeholder: string;
-  onChange: (value: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputMsg: FC<LogoProps> = ({ value, onChange, placeholder }) => {

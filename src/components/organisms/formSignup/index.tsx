@@ -1,40 +1,50 @@
 import React, { FC } from "react";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
-import { loginSchema } from "../../../validations/authorization";
+import { signupSchema } from "../../../validations/authorization";
 import { InputForm } from "../../molecules/inputForm";
 import { Button } from "../../atoms/Button";
 import { SecurityCode } from "../../molecules/securityCode";
-import captchaSrc from "../../../assets/captcha.png";
+//import captchaSrc from '../../../assets/captcha.png';
 import { SCREENS } from "../../../routes/endpoints";
+import { SelectGender } from "../../molecules/selectGender";
 
-import "./formLogin.scss";
+import "./formSignup.scss";
 
-export const FormLogin: FC = () => {
+// const captchaImg = new XMLHttpRequest();
+
+// captchaImg.open()
+
+const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
+
+export const FormSignup: FC = () => {
   const history = useHistory();
 
   const formik = useFormik({
     initialValues: {
       login: "",
       password: "",
+      passwordConfirm: "",
+      name: "",
+      gender_id: "",
       captcha: "",
     },
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
     },
-    validationSchema: loginSchema,
+    validationSchema: signupSchema,
   });
 
   return (
-    <div className="form-login">
-      <form className="form-login__form" onSubmit={formik.handleSubmit}>
-        <div className="form-login__inputs">
+    <div className="form-signup">
+      <form className="form-signup__form" onSubmit={formik.handleSubmit}>
+        <div className="form-signup__inputs">
           <InputForm
             onChange={formik.handleChange}
             inValidInput={formik.touched.login && Boolean(formik.errors.login)}
             value={formik.values.login}
             name="login"
-            description="User name"
+            description="Create user name"
             placeholder="Input user name"
             type="text"
             errorText={formik.errors.login}
@@ -46,12 +56,42 @@ export const FormLogin: FC = () => {
             }
             value={formik.values.password}
             name="password"
-            description="Password"
+            description="Create password"
             placeholder="Input password"
             type="password"
             errorText={formik.errors.password}
           />
-          <div className="form-login__security-code">
+          <InputForm
+            onChange={formik.handleChange}
+            inValidInput={
+              formik.touched.passwordConfirm &&
+              Boolean(formik.errors.passwordConfirm)
+            }
+            value={formik.values.passwordConfirm}
+            name="passwordConfirm"
+            description="Password confirmation"
+            placeholder="Password confirmation"
+            type="password"
+            errorText={formik.errors.passwordConfirm}
+          />
+          <InputForm
+            onChange={formik.handleChange}
+            inValidInput={formik.touched.name && Boolean(formik.errors.name)}
+            value={formik.values.name}
+            name="name"
+            description="Nickname"
+            placeholder="Nickname"
+            type="text"
+            errorText={formik.errors.name}
+          />
+          <SelectGender
+            description="Your gender"
+            genders={[
+              { gender: "Male", gender_id: 1 },
+              { gender: "Female", gender_id: 2 },
+            ]}
+          />
+          <div className="form-signup__security-code">
             <SecurityCode
               onChange={formik.handleChange}
               inValidInput={
@@ -68,18 +108,18 @@ export const FormLogin: FC = () => {
             />
           </div>
         </div>
-        <div className="form-login__buttons">
+        <div className="form-signup__buttons">
           <Button theme="submit-auth" type="submit">
-            Log in
+            Registration
           </Button>
           <Button
             onClick={() => {
-              history.push(SCREENS.SCREEN_SIGNUP);
+              history.push(SCREENS.SCREEN_LOGIN);
             }}
             theme="nav-auth"
             type="button"
           >
-            Registration
+            Log in
           </Button>
         </div>
       </form>

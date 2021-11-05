@@ -25,8 +25,8 @@ export const ChatMessage: FC<ChatMessageProps> = ({
 }) => {
   const [valueInput, setValueInput] = useState("");
 
-  const onChange = (value: string) => {
-    setValueInput(value);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValueInput(e.target.value);
   };
 
   const createDialogue = (dialogue: IDialogue[] | undefined) => {

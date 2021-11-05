@@ -11,6 +11,7 @@ $input-colors: (
 .input-form {
   height: 102px;
   width: 100%;
+  margin-bottom: 13px;
 
   &__description {
     font-size: 13px;
@@ -54,10 +55,7 @@ $input-colors: (
     line-height: 19px;
     margin-left: 8px;
   }
-  &_username {
-    margin-bottom: 13px;
-  }
-  &_password {
+  &_last-input {
     margin-bottom: 29px;
   }
 }

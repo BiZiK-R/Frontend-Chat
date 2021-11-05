@@ -7,27 +7,26 @@ import "./inputForm.scss";
 interface InputFormProps {
   placeholder: string;
   description: string;
+  name?: string;
   value: string;
   required?: boolean;
   type: "text" | "password" | "email";
-  validInput?: boolean;
-  errorText?: string;
+  inValidInput?: boolean;
+  errorText?: string | undefined;
   theme?: string;
-  onChange: (value: string) => void;
-  onBlur: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: () => void;
 }
 
 export const InputForm: FC<InputFormProps> = ({
-  placeholder,
-  required,
-  value,
-  type,
-  validInput,
-  onChange,
   description,
-  onBlur,
   theme,
   errorText,
+  inValidInput,
+  onBlur = () => {
+    //do nothing
+  },
+  ...props
 }) => {
   const [focusInput, setFocusInput] = useState(false);
 
@@ -43,27 +42,25 @@ export const InputForm: FC<InputFormProps> = ({
   };
 
   return (
-    <div className={cn("input-form", `input-form_${theme}`)}>
+    <div className={cn("input-form", theme ? `input-form_${theme}` : "")}>
       <span className="input-form__description">{description}</span>
       <label
         className={cn(
           "input-form__wrapper",
           focusInput ? "input-form__wrapper_typing" : "",
-          !validInput ? "input-form__wrapper_error" : ""
+          inValidInput ? "input-form__wrapper_error" : ""
         )}
       >
         <Input
-          onChange={onChange}
           onFocus={onFocus}
           onBlur={callbacks.onBlur}
-          value={value}
-          required={required}
-          type={type}
-          placeholder={placeholder}
           theme="form"
+          {...props}
         />
       </label>
-      {!validInput && <div className="input-form_error__text">{errorText}</div>}
+      {inValidInput && (
+        <div className="input-form_error__text">{errorText}</div>
+      )}
     </div>
   );
 };
