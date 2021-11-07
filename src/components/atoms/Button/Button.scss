@@ -52,19 +52,27 @@ $botton-colors: (
     box-sizing: border-box;
     border-radius: 8px;
   }
+  &_reset-captcha {
+    height: 18px;
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
 }
 
 @media screen and (max-width: 991px) {
   .button {
     &_submit-auth {
-      position: absolute;
-      bottom: 78px;
+      margin-bottom: 6px;
       width: 100%;
     }
     &_nav-auth {
-      position: absolute;
-      bottom: 14px;
+      margin-bottom: 14px;
       width: 100%;
+    }
+    &_reset-captcha {
+      right: 12px;
     }
   }
 }

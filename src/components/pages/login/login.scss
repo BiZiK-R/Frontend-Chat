@@ -7,6 +7,7 @@
     width: 50%;
     min-width: 500px;
     box-sizing: border-box;
+    height: 100vh;
   }
   &__header {
     margin-bottom: 48px;
@@ -40,7 +41,7 @@
     background-image: url(../../../assets/loginBackgraund.svg);
     background-size: cover;
     width: 50%;
-    height: 100vh;
+    min-height: 100%;
   }
 }
 
@@ -97,12 +98,13 @@
     &__header {
       position: absolute;
       top: calc(
-        48% - (130px + 24px)
+        48% - (98px + 24px)
       ); // (top__block% - (height__header + margin__bottom)
 
       &-title {
         font-size: 27px;
         line-height: 33px;
+        margin-bottom: 8px;
         ._color-blue {
           font-size: 27px;
           line-height: 33px;

@@ -1,10 +1,8 @@
 import React, { FC } from "react";
 import { InputForm } from "../inputForm";
 import { Captcha } from "../captcha";
-import { Button } from "../../atoms/Button";
 
 import "./securityCode.scss";
-import resetCaptcha from "../../../assets/reset.svg";
 
 interface SecurityCodeProps {
   src: string;
@@ -30,10 +28,7 @@ export const SecurityCode: FC<SecurityCodeProps> = ({
   return (
     <div className="security-code">
       <InputForm {...props} />
-      <Captcha src={src} />
-      <Button type="button" onClick={onClick}>
-        <img className="security-code__reset" src={resetCaptcha} />
-      </Button>
+      <Captcha src={src} onClick={onClick} />
     </div>
   );
 };

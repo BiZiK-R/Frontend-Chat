@@ -10,7 +10,8 @@
 
 @media screen and (max-width: 540px) {
   .logo {
-    &_login {
+    &_login,
+    &_signup {
       width: 83.76px;
       height: 32px;
     }

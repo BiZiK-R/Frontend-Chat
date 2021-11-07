@@ -1,16 +1,32 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import { loginSchema } from "../../../validations/authorization";
 import { InputForm } from "../../molecules/inputForm";
 import { Button } from "../../atoms/Button";
 import { SecurityCode } from "../../molecules/securityCode";
-import captchaSrc from "../../../assets/captcha.png";
+//import captchaSrc from "../../../assets/captcha.png";
 import { SCREENS } from "../../../routes/endpoints";
+import { Authorization } from "../../../api/authorization";
 
 import "./formLogin.scss";
 
+const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
+
+const login = new Authorization();
+
+// const getGender = async () => {
+//   const response = await fetch('http://109.194.37.212:93/api/auth');
+//   if (response.ok) {
+//     const res = await response.json();
+//       console.log(res.genders);
+//   }
+// }
+
+// getGender();
+
 export const FormLogin: FC = () => {
+  const [btnDisabled, setBtnDisabled] = useState(false);
   const history = useHistory();
 
   const formik = useFormik({
@@ -20,7 +36,9 @@ export const FormLogin: FC = () => {
       captcha: "",
     },
     onSubmit: (values) => {
-      console.log(JSON.stringify(values));
+      setBtnDisabled(true);
+      login.postLogin(values);
+      setBtnDisabled(false);
     },
     validationSchema: loginSchema,
   });
@@ -69,7 +87,7 @@ export const FormLogin: FC = () => {
           </div>
         </div>
         <div className="form-login__buttons">
-          <Button theme="submit-auth" type="submit">
+          <Button disabled={btnDisabled} theme="submit-auth" type="submit">
             Log in
           </Button>
           <Button

@@ -57,7 +57,9 @@ const DropdownIndicator = (props: DropdownIndicatorProps) => {
 };
 
 interface SelectGenderProps {
+  name?: string;
   description: string;
+  onChange: (e: any) => any;
   genders: {
     gender_id: number;
     gender: string;
@@ -67,6 +69,8 @@ interface SelectGenderProps {
 export const SelectGender: FC<SelectGenderProps> = ({
   description,
   genders,
+  name,
+  onChange,
 }) => {
   const optionGenders = genders.map((e) => ({
     value: e.gender_id,
@@ -77,9 +81,11 @@ export const SelectGender: FC<SelectGenderProps> = ({
     <div className="select-gender">
       <span className="select-gender__description">{description}</span>
       <Select
+        onChange={onChange}
         options={optionGenders}
         styles={customStyles}
         components={{ DropdownIndicator }}
+        name={name}
       />
     </div>
   );

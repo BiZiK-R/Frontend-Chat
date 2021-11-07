@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import { signupSchema } from "../../../validations/authorization";
@@ -8,6 +8,8 @@ import { SecurityCode } from "../../molecules/securityCode";
 //import captchaSrc from '../../../assets/captcha.png';
 import { SCREENS } from "../../../routes/endpoints";
 import { SelectGender } from "../../molecules/selectGender";
+import { Authorization } from "../../../api/authorization";
+import { Genders } from "../../../store/genders";
 
 import "./formSignup.scss";
 
@@ -17,8 +19,14 @@ import "./formSignup.scss";
 
 const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
 
+const signup = new Authorization();
+const genders = new Genders();
+genders.getGender();
+console.log(genders.gender);
+
 export const FormSignup: FC = () => {
   const history = useHistory();
+  const [btnDisabled, setBtnDisabled] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -26,11 +34,13 @@ export const FormSignup: FC = () => {
       password: "",
       passwordConfirm: "",
       name: "",
-      gender_id: "",
+      gender_id: 0,
       captcha: "",
     },
     onSubmit: (values) => {
-      console.log(JSON.stringify(values));
+      setBtnDisabled(true);
+      signup.postSignUp(values);
+      setBtnDisabled(false);
     },
     validationSchema: signupSchema,
   });
@@ -86,10 +96,10 @@ export const FormSignup: FC = () => {
           />
           <SelectGender
             description="Your gender"
-            genders={[
-              { gender: "Male", gender_id: 1 },
-              { gender: "Female", gender_id: 2 },
-            ]}
+            onChange={(selectedOption) =>
+              formik.setFieldValue("gender_id", selectedOption.value)
+            }
+            genders={genders.gender}
           />
           <div className="form-signup__security-code">
             <SecurityCode
@@ -109,7 +119,7 @@ export const FormSignup: FC = () => {
           </div>
         </div>
         <div className="form-signup__buttons">
-          <Button theme="submit-auth" type="submit">
+          <Button disabled={btnDisabled} theme="submit-auth" type="submit">
             Registration
           </Button>
           <Button

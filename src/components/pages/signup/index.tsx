@@ -1,7 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { Logo } from "../../atoms/logo";
 import { FormSignup } from "../../organisms/formSignup";
-
 import "./signup.scss";
 
 export const Signup: FC = () => {
