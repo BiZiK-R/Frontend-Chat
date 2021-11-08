@@ -7,7 +7,9 @@
     width: 50%;
     min-width: 500px;
     box-sizing: border-box;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
+    padding: 16px;
   }
   &__header {
     margin-bottom: 48px;

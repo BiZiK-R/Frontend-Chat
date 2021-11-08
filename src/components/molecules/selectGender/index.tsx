@@ -11,7 +11,7 @@ const customStyles = {
   }),
   menu: (provided: any) => ({
     ...provided,
-    width: "calc(50% - 12px)",
+    width: "calc(50% - 9px)",
   }),
   control: () => ({
     // none of react-select's styles are passed to <Control />
@@ -72,9 +72,9 @@ export const SelectGender: FC<SelectGenderProps> = ({
   name,
   onChange,
 }) => {
-  const optionGenders = genders.map((e) => ({
-    value: e.gender_id,
-    label: e.gender,
+  const optionGenders = genders.map((item) => ({
+    value: item.gender_id,
+    label: item.gender,
   }));
 
   return (

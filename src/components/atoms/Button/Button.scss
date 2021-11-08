@@ -59,6 +59,9 @@ $botton-colors: (
     top: 50%;
     transform: translate(0, -50%);
   }
+  &_arrow-chat-header-mobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -73,6 +76,14 @@ $botton-colors: (
     }
     &_reset-captcha {
       right: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .button {
+    &_arrow-chat-header-mobile {
+      display: block;
     }
   }
 }

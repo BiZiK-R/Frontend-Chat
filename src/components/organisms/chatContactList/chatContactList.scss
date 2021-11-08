@@ -18,3 +18,12 @@
     }
   }
 }
+
+@media screen and (max-width: 900px) {
+  .chat-list-contact {
+    width: 100vw;
+    //border-right: none;
+    // display: flex;
+    // flex-direction: column;
+  }
+}

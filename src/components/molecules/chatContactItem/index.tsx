@@ -13,6 +13,7 @@ interface ChatContactItemProps {
   lastMsgYou: boolean;
   select?: boolean;
   id: number;
+  onClick?: () => void;
 }
 
 export const ChatContactItem: FC<ChatContactItemProps> = ({
@@ -22,6 +23,7 @@ export const ChatContactItem: FC<ChatContactItemProps> = ({
   lastMsgYou,
   select,
   id,
+  onClick,
 }) => {
   const lastMsgShort = (lastMsg: string) => {
     if (lastMsg.length > 20) {
@@ -31,7 +33,11 @@ export const ChatContactItem: FC<ChatContactItemProps> = ({
   };
 
   return (
-    <NavLink to={SCREENS.SCREEN_CHAT + `/${id}`} activeClassName="_select">
+    <NavLink
+      onClick={onClick}
+      to={SCREENS.SCREEN_CHAT + `/${id}`}
+      activeClassName="_select"
+    >
       <div
         className={cn(
           "chat-contact-item",

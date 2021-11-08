@@ -32,25 +32,33 @@ export const FormSignup: FC = () => {
     initialValues: {
       login: "",
       password: "",
-      passwordConfirm: "",
+      password_confirm: "",
       name: "",
       gender_id: 0,
       captcha: "",
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       setBtnDisabled(true);
-      signup.postSignUp(values);
-      setBtnDisabled(false);
+      const res = await signup.postSignUp(values);
+      if (res) {
+        history.push(SCREENS.SCREEN_LOGIN);
+      }
+      setBtnDisabled(!res);
     },
     validationSchema: signupSchema,
   });
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    formik.handleChange(e);
+    setBtnDisabled(false);
+  };
 
   return (
     <div className="form-signup">
       <form className="form-signup__form" onSubmit={formik.handleSubmit}>
         <div className="form-signup__inputs">
           <InputForm
-            onChange={formik.handleChange}
+            onChange={onChange}
             inValidInput={formik.touched.login && Boolean(formik.errors.login)}
             value={formik.values.login}
             name="login"
@@ -60,7 +68,7 @@ export const FormSignup: FC = () => {
             errorText={formik.errors.login}
           />
           <InputForm
-            onChange={formik.handleChange}
+            onChange={onChange}
             inValidInput={
               formik.touched.password && Boolean(formik.errors.password)
             }
@@ -72,20 +80,20 @@ export const FormSignup: FC = () => {
             errorText={formik.errors.password}
           />
           <InputForm
-            onChange={formik.handleChange}
+            onChange={onChange}
             inValidInput={
-              formik.touched.passwordConfirm &&
-              Boolean(formik.errors.passwordConfirm)
+              formik.touched.password_confirm &&
+              Boolean(formik.errors.password_confirm)
             }
-            value={formik.values.passwordConfirm}
-            name="passwordConfirm"
+            value={formik.values.password_confirm}
+            name="password_confirm"
             description="Password confirmation"
             placeholder="Password confirmation"
             type="password"
-            errorText={formik.errors.passwordConfirm}
+            errorText={formik.errors.password_confirm}
           />
           <InputForm
-            onChange={formik.handleChange}
+            onChange={onChange}
             inValidInput={formik.touched.name && Boolean(formik.errors.name)}
             value={formik.values.name}
             name="name"
@@ -96,14 +104,15 @@ export const FormSignup: FC = () => {
           />
           <SelectGender
             description="Your gender"
-            onChange={(selectedOption) =>
-              formik.setFieldValue("gender_id", selectedOption.value)
-            }
+            onChange={(selectedOption) => {
+              formik.setFieldValue("gender_id", selectedOption.value);
+              setBtnDisabled(false);
+            }}
             genders={genders.gender}
           />
           <div className="form-signup__security-code">
             <SecurityCode
-              onChange={formik.handleChange}
+              onChange={onChange}
               inValidInput={
                 formik.touched.captcha && Boolean(formik.errors.captcha)
               }

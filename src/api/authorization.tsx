@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export class Authorization {
   _apiBase: string;
 
@@ -6,31 +8,58 @@ export class Authorization {
   }
 
   postRequest = async (url: string, data: any) => {
-    try {
-      console.log(JSON.stringify(data));
-      const response = await fetch(`${this._apiBase}${url}`, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "applacation/json",
-        },
-      });
+    const response = await fetch(`${this._apiBase}${url}`, {
+      method: "POST",
+      body: data,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+      credentials: "same-origin",
+    });
+    if (response.ok) {
+      console.log(response);
       const json = await response.json();
-      console.log("Успех: ", JSON.stringify(json));
+      console.log("Успех: ", json);
       return json;
-    } catch (error) {
-      console.log("Ошибка: ", error);
-      return error;
     }
+    console.log(`Ошибка: ${response.status} ${response.statusText}`);
+    return false;
   };
 
-  postSignUp = async (data: any) => {
-    const res = await this.postRequest("/auth/register", data);
+  postSignUp = async (data: {
+    login: string;
+    password: string;
+    password_confirm: string;
+    name: string;
+    gender_id: number;
+    captcha: string;
+  }) => {
+    const signupData = new FormData();
+    signupData.append("login", data.login);
+    signupData.append("password", data.password);
+    signupData.append("password_confirm", data.password_confirm);
+    signupData.append("name", data.name);
+    signupData.append("gender_id", `${data.gender_id}`);
+    signupData.append("captcha", data.captcha);
+    const res = await this.postRequest("/auth/register", signupData);
+    console.log(res);
     return res;
   };
 
-  postLogin = async (data: any) => {
-    const res = await this.postRequest("/auth/login", data);
+  postLogin = async (data: {
+    login: string;
+    password: string;
+    captcha: string;
+  }) => {
+    const loginData = new FormData();
+    //console.log(data.login)
+    loginData.append("login", data.login);
+    loginData.append("password", data.password);
+    loginData.append("captcha", data.captcha);
+    const res = await this.postRequest("/auth/login", loginData);
+    if (res) {
+      localStorage.setItem("connect_key", res);
+    }
     return res;
   };
 }

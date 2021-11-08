@@ -23,7 +23,7 @@ export const signupSchema = yup.object().shape({
     .required("The field must be filled")
     .max(50, "Must be no more than 50 characters"),
   password: yup.string().required("The field must be filled"),
-  passwordConfirm: yup
+  password_confirm: yup
     .string()
     .required("The field must be filled")
     .oneOf([yup.ref("password"), null], "Password mismatch"),
@@ -31,7 +31,7 @@ export const signupSchema = yup.object().shape({
     .string()
     .required("The field must be filled")
     .max(50, "Must be no more than 50 characters"),
-  gender_id: yup.number().required("The field must be filled"),
+  gender_id: yup.number().integer().required("The field must be filled"),
   captcha: yup
     .string()
     .required("The field must be filled")

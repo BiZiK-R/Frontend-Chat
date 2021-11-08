@@ -14,6 +14,7 @@ interface ChatMessageProps {
   dialogue?: IDialogue[];
   loading?: boolean;
   noContact?: boolean;
+  onClick?: () => void;
 }
 
 export const ChatMessage: FC<ChatMessageProps> = ({
@@ -22,6 +23,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({
   dialogue,
   loading,
   noContact = false,
+  onClick,
 }) => {
   const [valueInput, setValueInput] = useState("");
 
@@ -57,7 +59,9 @@ export const ChatMessage: FC<ChatMessageProps> = ({
 
   const chatMsgHeader = typeof name == "string" &&
     typeof lastSeen === "string" &&
-    !loading && <ChatMsgHeader name={name} lastSeen={lastSeen} />;
+    !loading && (
+      <ChatMsgHeader onClick={onClick} name={name} lastSeen={lastSeen} />
+    );
   const inputMsg = typeof name == "string" &&
     typeof lastSeen === "string" &&
     !loading && (

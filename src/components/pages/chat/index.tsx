@@ -4,12 +4,18 @@ import { ChatContactList } from "../../organisms/chatContactList";
 import { ChatMessage } from "../../organisms/chatMessage";
 import { useLocation } from "react-router-dom";
 import { DATA, DATAUNDF } from "../../../data/data";
+import cn from "classnames";
 
 import "./chat.scss";
 
 export const Chat: FC = () => {
   const [loading, setLoading] = useState(false);
+  const [focusChat, setFocusChat] = useState(false);
   const idContact = +useLocation().pathname.slice(6);
+
+  const onFocusChat = () => {
+    setFocusChat(!focusChat);
+  };
 
   const getDialogue = (idContact: number) => {
     if (DATA.length) {
@@ -20,6 +26,7 @@ export const Chat: FC = () => {
           dialogue = selectContact?.dialogue;
         return (
           <ChatMessage
+            onClick={onFocusChat}
             name={name}
             lastSeen={lastSeen}
             dialogue={dialogue}
@@ -35,9 +42,14 @@ export const Chat: FC = () => {
 
   return (
     <div className="chat">
-      <ChatHeader />
-      <div className="chat__content">
-        <ChatContactList data={DATA} />
+      <ChatHeader focusChat={focusChat} />
+      <div
+        className={cn(
+          "chat__content",
+          focusChat ? "chat__content_focus-chat" : ""
+        )}
+      >
+        <ChatContactList onClick={onFocusChat} data={DATA} />
         {displayDialogue}
       </div>
     </div>

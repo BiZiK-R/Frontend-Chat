@@ -18,3 +18,12 @@
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
   }
 }
+
+@media screen and (max-width: 900px) {
+  .chat-header {
+    transition: transform 0.3s ease;
+    &_focus-chat {
+      transform: translateX(-100vw);
+    }
+  }
+}

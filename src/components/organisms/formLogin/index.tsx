@@ -8,22 +8,13 @@ import { SecurityCode } from "../../molecules/securityCode";
 //import captchaSrc from "../../../assets/captcha.png";
 import { SCREENS } from "../../../routes/endpoints";
 import { Authorization } from "../../../api/authorization";
+import axios from "axios";
 
 import "./formLogin.scss";
 
 const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
 
 const login = new Authorization();
-
-// const getGender = async () => {
-//   const response = await fetch('http://109.194.37.212:93/api/auth');
-//   if (response.ok) {
-//     const res = await response.json();
-//       console.log(res.genders);
-//   }
-// }
-
-// getGender();
 
 export const FormLogin: FC = () => {
   const [btnDisabled, setBtnDisabled] = useState(false);
@@ -35,10 +26,13 @@ export const FormLogin: FC = () => {
       password: "",
       captcha: "",
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       setBtnDisabled(true);
-      login.postLogin(values);
-      setBtnDisabled(false);
+      const res = await login.postLogin(values);
+      setBtnDisabled(!res);
+      if (res) {
+        history.push(SCREENS.SCREEN_CHAT);
+      }
     },
     validationSchema: loginSchema,
   });
@@ -48,7 +42,10 @@ export const FormLogin: FC = () => {
       <form className="form-login__form" onSubmit={formik.handleSubmit}>
         <div className="form-login__inputs">
           <InputForm
-            onChange={formik.handleChange}
+            onChange={(e) => {
+              formik.handleChange(e);
+              setBtnDisabled(false);
+            }}
             inValidInput={formik.touched.login && Boolean(formik.errors.login)}
             value={formik.values.login}
             name="login"

@@ -6,9 +6,13 @@ import "./chatContactList.scss";
 
 interface ChatContactListProps {
   data: IContact[] | undefined;
+  onClick?: () => void;
 }
 
-export const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
+export const ChatContactList: FC<ChatContactListProps> = ({
+  data,
+  onClick,
+}) => {
   const createListContact = (data: IContact[] | undefined) => {
     if (typeof data !== "undefined" && data.length > 0) {
       return data.map(({ id, name, gender, dialogue }) => {
@@ -16,6 +20,7 @@ export const ChatContactList: FC<ChatContactListProps> = ({ data }) => {
         //setDataFiling(true);
         return (
           <ChatContactItem
+            onClick={onClick}
             key={id}
             id={id}
             name={name}
