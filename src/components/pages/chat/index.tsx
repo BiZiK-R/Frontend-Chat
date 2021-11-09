@@ -57,10 +57,7 @@ export const Chat: FC = observer(() => {
     const personId = idContact;
     if (value) {
       contacts.sendMessage({ text: value, your: true }, personId);
-      const message = JSON.stringify({
-        text: messageInput.value,
-        your: true,
-      });
+      const message = `{type: 'send_message', data: {text: messageInput.value, your: true, }}`;
       ws.send(message);
       messageInput.resetInput();
     }

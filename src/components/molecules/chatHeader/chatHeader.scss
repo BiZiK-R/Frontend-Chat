@@ -21,9 +21,24 @@
 
 @media screen and (max-width: 900px) {
   .chat-header {
+    border-bottom: 1px solid #d7e6ff;
     transition: transform 0.3s ease;
     &_focus-chat {
       transform: translateX(-100vw);
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .chat-header {
+    height: 64px;
+    &__icon {
+      width: 36px;
+      height: 36px;
+      &-img {
+        width: 12.5px;
+        height: 12.41px;
+      }
     }
   }
 }

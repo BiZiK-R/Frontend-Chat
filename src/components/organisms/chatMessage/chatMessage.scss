@@ -56,3 +56,14 @@
     margin-top: -80px;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .chat-message {
+    margin-top: -64px;
+    &__messages {
+      height: calc(100% - 72px - 48px);
+      margin-top: 72px;
+      margin-bottom: 48px;
+    }
+  }
+}

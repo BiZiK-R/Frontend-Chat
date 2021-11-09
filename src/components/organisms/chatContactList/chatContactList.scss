@@ -21,8 +21,10 @@
 
 @media screen and (max-width: 900px) {
   .chat-list-contact {
+    box-sizing: border-box;
     width: 100vw;
-    //border-right: none;
+    padding-top: 20px;
+    border-right: none;
     // display: flex;
     // flex-direction: column;
   }
