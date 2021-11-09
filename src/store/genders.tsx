@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-export class Genders {
+class Genders {
   gender = [
     { gender: "Male", gender_id: 1 },
     { gender: "Female", gender_id: 2 },
@@ -21,3 +21,5 @@ export class Genders {
     }
   }
 }
+
+export const genders = new Genders();

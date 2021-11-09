@@ -6,19 +6,19 @@ import "./chatMsgHeader.scss";
 import { IconProfile } from "../../atoms/iconProfile";
 
 interface ChatMsgHeaderProps {
-  name: string;
-  lastSeen: string;
-  onClick?: () => void;
+  name?: string;
+  lastSeen?: string;
+  onBack?: () => void;
 }
 
 export const ChatMsgHeader: FC<ChatMsgHeaderProps> = ({
   name,
   lastSeen,
-  onClick,
+  onBack,
 }) => {
   return (
     <div className="chat-msg-header">
-      <Button onClick={onClick} theme="arrow-chat-header-mobile">
+      <Button onClick={onBack} theme="arrow-chat-header-mobile">
         <img src={arrowBack} alt="back" />
       </Button>
       <IconProfile theme="chat-header-mobile" gender="Male" />

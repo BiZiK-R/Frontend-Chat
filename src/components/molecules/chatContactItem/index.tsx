@@ -9,10 +9,10 @@ import { NavLink } from "react-router-dom";
 interface ChatContactItemProps {
   name: string;
   gender: string;
-  lastMsg: string;
-  lastMsgYou: boolean;
+  lastMsg?: string;
+  lastMsgYou?: boolean;
   select?: boolean;
-  id: number;
+  id: string;
   onClick?: () => void;
 }
 
@@ -47,12 +47,14 @@ export const ChatContactItem: FC<ChatContactItemProps> = ({
         <IconProfile gender={gender} />
         <div className="chat-contact-item__description">
           <h3 className="chat-contact-item__name">{name}</h3>
-          <p className="chat-contact-item__lastMsg">
-            {lastMsgYou && (
-              <span className="chat-contact-item__lastMsg_you">You: </span>
-            )}
-            {lastMsgShort(lastMsg)}
-          </p>
+          {lastMsg && (
+            <p className="chat-contact-item__lastMsg">
+              {lastMsgYou && (
+                <span className="chat-contact-item__lastMsg_you">You: </span>
+              )}
+              {lastMsgShort(lastMsg)}
+            </p>
+          )}
         </div>
       </div>
     </NavLink>

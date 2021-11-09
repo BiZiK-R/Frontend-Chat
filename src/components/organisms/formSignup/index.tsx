@@ -9,7 +9,7 @@ import { SecurityCode } from "../../molecules/securityCode";
 import { SCREENS } from "../../../routes/endpoints";
 import { SelectGender } from "../../molecules/selectGender";
 import { Authorization } from "../../../api/authorization";
-import { Genders } from "../../../store/genders";
+import { genders } from "../../../store/genders";
 
 import "./formSignup.scss";
 
@@ -20,7 +20,7 @@ import "./formSignup.scss";
 const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
 
 const signup = new Authorization();
-const genders = new Genders();
+
 genders.getGender();
 console.log(genders.gender);
 
