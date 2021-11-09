@@ -4,15 +4,12 @@ export interface IFile {
 }
 
 export interface IDialogue {
-  your: boolean;
-  message?: string;
-  id: number;
-  file?: IFile;
+  text?: string;
+  your?: boolean;
 }
 export interface IContact {
-  id: number;
   name: string;
   gender: string;
-  lastSeen: string;
-  dialogue: IDialogue[] | [];
+  id: string;
+  dialogue: IDialogue[];
 }

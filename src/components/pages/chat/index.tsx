@@ -53,10 +53,13 @@ export const Chat: FC = observer(() => {
   };
 
   const onSendMsg = () => {
-    if (messageInput.value) {
+    const value = toJS(messageInput.value);
+    const personId = idContact;
+    if (value) {
+      contacts.sendMessage({ text: value, your: true }, personId);
       const message = JSON.stringify({
-        type: "send_message",
-        data: messageInput.value,
+        text: messageInput.value,
+        your: true,
       });
       ws.send(message);
       messageInput.resetInput();
@@ -123,14 +126,13 @@ export const Chat: FC = observer(() => {
       return <ChatMessage noContact />;
 
     if (typeof idContact !== "undefined" && idContact !== "") {
-      const selectContact = data.find(
-        (contact, index) => String(index) === idContact
-      );
-      const name = selectContact!.name;
+      const selectContact = data.find((contact) => contact.id === idContact);
+      const { name, dialogue } = selectContact!;
       return (
         <ChatMessage
           onBack={onFocusChat}
           name={name}
+          dialogue={dialogue}
           loading={loadingContact}
           onSendMsg={onSendMsg}
         />

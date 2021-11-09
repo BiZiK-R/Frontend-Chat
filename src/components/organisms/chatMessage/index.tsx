@@ -39,25 +39,21 @@ export const ChatMessage: FC<ChatMessageProps> = ({
     return location !== SCREENS.SCREEN_CHAT;
   };
 
-  const createDialogue = (dialogue: IDialogue[] | undefined) => {
+  const createDialogue = (dialogue: IDialogue[]) => {
     if (checkSelectChat()) {
-      // return dialogue.map((dialogue) => {
-      //   const { id, message, your, file } = dialogue;
-      //   return file ? (
-      //     <Message key={id} yourMsg={your}>
-      //       <FileMsg file={file} />
-      //     </Message>
-      //   ) : (
-      //     <Message key={id} yourMsg={your}>
-      //       {message}
-      //     </Message>
-      //   );
-      // });
-      return (
-        <Message key={location.slice(6)} yourMsg={true}>
-          {name}
-        </Message>
-      );
+      return dialogue.map((dialogue, index) => {
+        const { text, your } = dialogue;
+        return (
+          <Message key={index} yourMsg={!!your}>
+            {text}
+          </Message>
+        );
+      });
+      // return (
+      //   <Message key={location.slice(6)} yourMsg={true}>
+      //     {name}
+      //   </Message>
+      // );
     }
     return (
       <div className="chat-message__dialogue-no-selected">
@@ -68,7 +64,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({
     );
   };
 
-  const listMessage = createDialogue(dialogue);
+  const listMessage = createDialogue(dialogue ? dialogue : []);
 
   const chatMsgHeader = checkSelectChat() && !loading && (
     <ChatMsgHeader onBack={onBack} name={name} lastSeen={lastSeen} />

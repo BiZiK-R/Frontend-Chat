@@ -11,10 +11,10 @@
     height: calc(100% - 96px - 80px);
     margin-top: 96px;
     margin-bottom: 80px;
-    padding-top: 36px;
     position: relative;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: end;
     overflow: auto;
     box-sizing: border-box;
     &::-webkit-scrollbar {

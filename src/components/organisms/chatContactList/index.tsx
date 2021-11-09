@@ -18,28 +18,24 @@ export const ChatContactList: FC<ChatContactListProps> = ({
   onClick,
   loading,
 }) => {
-  const contactList = toJS(contacts.allUsers);
-
-  const createListContact = (
-    data: IContact[] | undefined | { name: string; gender: string }[]
-  ) => {
+  const createListContact = (data: IContact[] | undefined) => {
     if (typeof data !== "undefined" && data.length > 0) {
-      return data.map((item, index) => {
+      return data.map((item) => {
         //const lastMsg = dialogue ? dialogue[0] : undefined;
-        const { name, gender } = item;
+        const { name, gender, id, dialogue } = item;
+        const lastMsg =
+          dialogue.length > 0 ? dialogue[dialogue.length - 1] : "";
         if (item.name && item.gender) {
           //setDataFiling(true);
           return (
             <ChatContactItem
               onClick={onClick}
-              key={index}
-              id={index}
+              key={id}
+              id={id}
               name={name}
               gender={gender}
-              // lastMsg={
-              //   lastMsg ? (lastMsg.message ? lastMsg.message : "file") : ""
-              // }
-              // lastMsgYou={lastMsg ? lastMsg.your : false}
+              lastMsg={lastMsg ? lastMsg.text : ""}
+              lastMsgYou={lastMsg ? lastMsg.your : false}
             />
           );
         }
@@ -57,7 +53,7 @@ export const ChatContactList: FC<ChatContactListProps> = ({
       </div>
     );
   };
-
+  const contactList = toJS(contacts.allUsers);
   const listContactItem = createListContact(contactList);
 
   return (
