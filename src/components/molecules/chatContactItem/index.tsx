@@ -12,7 +12,7 @@ interface ChatContactItemProps {
   lastMsg?: string;
   lastMsgYou?: boolean;
   select?: boolean;
-  id: string;
+  id: string | number;
   onClick?: () => void;
 }
 

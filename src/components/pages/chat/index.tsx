@@ -8,19 +8,41 @@ import cn from "classnames";
 import { messageInput } from "../../../store/messageInput";
 import { contacts } from "../../../store/contacts";
 import { toJS } from "mobx";
+import { observer } from "mobx-react-lite";
 
 import "./chat.scss";
 
-const ws = new WebSocket(
-  `ws://109.194.37.212:2346/?type=test&ws_id=${localStorage.getItem(
-    "connect_key"
-  )}`
-);
-
-export const Chat: FC = () => {
+export const Chat: FC = observer(() => {
   const [loadingContact, setLoadingContact] = useState(false);
   const [focusChat, setFocusChat] = useState(false);
   const idContact = useLocation().pathname.slice(6);
+
+  const ws = new WebSocket(
+    `ws://109.194.37.212:2346/?type=test&ws_id=${localStorage.getItem(
+      "connect_key"
+    )}`
+  );
+
+  ws.onmessage = function (event) {
+    console.log("Получены данные " + event.data);
+    //setLoadingContact(false);
+    try {
+      const data = JSON.parse(event.data);
+      switch (data.type) {
+        case "user_data":
+          contacts.initialMe(data.data);
+          break;
+        case "users_list":
+          contacts.initialAllUsers(data.data);
+          break;
+        default:
+          console.log(data);
+          break;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const onFocusChat = () => {
     setFocusChat(!focusChat);
@@ -28,18 +50,24 @@ export const Chat: FC = () => {
 
   const onSendMsg = () => {
     if (messageInput.value) {
-      ws.send(messageInput.value);
+      const message = JSON.stringify({
+        type: "send_message",
+        data: messageInput.value,
+      });
+      ws.send(message);
       messageInput.resetInput();
     }
   };
 
-  const createContcatLsit = () => {
-    getMe();
-    getAllUsers();
-  };
-
   useEffect(() => {
     console.log("mount");
+    //setLoadingContact(true);
+    ws.onopen = () => {
+      console.log("WS: Соединение установленно");
+      createContcatLsit();
+      //setLoadingContact(false);
+    };
+
     ws.onclose = (event) => {
       if (event.wasClean) {
         console.log(
@@ -55,35 +83,13 @@ export const Chat: FC = () => {
     ws.onerror = (error) => {
       console.log(`WS: [error] ${error}`);
     };
-
-    ws.onopen = () => {
-      console.log("WS: Соединение установленно");
-      setLoadingContact(true);
-      createContcatLsit();
-    };
   }, []);
-
-  ws.onmessage = function (event) {
-    console.log("Получены данные " + event.data);
-    const data = JSON.parse(event.data);
-    switch (data.type) {
-      case "user_data":
-        contacts.initialMe(data.data);
-        break;
-      case "users_list":
-        contacts.initialAllUsers(data.data);
-        setLoadingContact(false);
-        break;
-      default:
-        console.log(data);
-        break;
-    }
-  };
 
   const getMe = () => {
     const meRequest = JSON.stringify({ type: "user_data" });
     try {
       ws.send(meRequest);
+      console.log("send: ", meRequest);
     } catch (error) {
       console.log(error);
     }
@@ -93,30 +99,40 @@ export const Chat: FC = () => {
     const allUsers = JSON.stringify({ type: "users_list" });
     try {
       ws.send(allUsers);
+      console.log("send: ", allUsers);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const createContcatLsit = () => {
+    //setLoadingContact(true);
+    getMe();
+    getAllUsers();
+  };
+
   const getDialogue = (idContact: number | string) => {
     const data = toJS(contacts.contactList);
-    if (data.length) {
-      if (idContact) {
-        const selectContact = data.find(
-          (contact) => contact.name === idContact
-        );
-        const name = selectContact!.name;
-        return (
-          <ChatMessage
-            onBack={onFocusChat}
-            name={name}
-            //loading={loadingContact}
-            onSendMsg={onSendMsg}
-          />
-        );
-      } else return <ChatMessage />;
+    if (!loadingContact) {
+      if (data.length && data[0].name && data[0].gender) {
+        if (idContact) {
+          const selectContact = data.find(
+            (contact, index) => String(index) === idContact
+          );
+          const name = selectContact!.name;
+          return (
+            <ChatMessage
+              onBack={onFocusChat}
+              name={name}
+              //loading={loadingContact}
+              onSendMsg={onSendMsg}
+            />
+          );
+        } else return <ChatMessage />;
+      }
+      return <ChatMessage noContact />;
     }
-    return <ChatMessage noContact />;
+    return <ChatMessage loading />;
   };
 
   const displayDialogue = getDialogue(idContact);
@@ -133,10 +149,10 @@ export const Chat: FC = () => {
         <ChatContactList
           onClick={onFocusChat}
           loading={loadingContact}
-          data={DATA}
+          //data={DATA}
         />
         {displayDialogue}
       </div>
     </div>
   );
-};
+});

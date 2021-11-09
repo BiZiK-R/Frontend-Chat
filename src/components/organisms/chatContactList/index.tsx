@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { ChatContactItem } from "../../molecules/chatContactItem";
 import { IContact } from "../../../types/types";
 import { contacts } from "../../../store/contacts";
@@ -8,26 +8,30 @@ import { toJS } from "mobx";
 import "./chatContactList.scss";
 
 interface ChatContactListProps {
-  data: IContact[] | undefined;
+  //data: IContact[] | undefined;
   loading: boolean;
   onClick?: () => void;
 }
 
 export const ChatContactList: FC<ChatContactListProps> = ({
-  data,
+  // data,
   onClick,
   loading,
 }) => {
   const contactList = toJS(contacts.contactList);
 
+  useEffect(() => {
+    console.log("mount contact list");
+  }, []);
+
   const createListContact = (
     data: IContact[] | undefined | { name: string; gender: string }[]
   ) => {
     if (typeof data !== "undefined" && data.length > 0) {
-      return data.map(({ name, gender }) => {
+      return data.map((item, index) => {
         //const lastMsg = dialogue ? dialogue[0] : undefined;
-        if (name && gender) {
-          const index = name;
+        const { name, gender } = item;
+        if (item.name && item.gender) {
           //setDataFiling(true);
           return (
             <ChatContactItem
