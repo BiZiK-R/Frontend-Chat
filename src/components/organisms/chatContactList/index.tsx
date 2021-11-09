@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { ChatContactItem } from "../../molecules/chatContactItem";
 import { IContact } from "../../../types/types";
 import { contacts } from "../../../store/contacts";
@@ -18,11 +18,7 @@ export const ChatContactList: FC<ChatContactListProps> = ({
   onClick,
   loading,
 }) => {
-  const contactList = toJS(contacts.contactList);
-
-  useEffect(() => {
-    console.log("mount contact list");
-  }, []);
+  const contactList = toJS(contacts.allUsers);
 
   const createListContact = (
     data: IContact[] | undefined | { name: string; gender: string }[]

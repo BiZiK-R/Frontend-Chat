@@ -14,7 +14,7 @@ export const Routes: FC = () => {
       <Route path={SCREENS.SCREEN_SIGNUP} exact>
         <Signup />
       </Route>
-      <Route path={SCREENS.SCREEN_CHAT}>
+      <Route path={[`${SCREENS.SCREEN_CHAT}/:idContact`, SCREENS.SCREEN_CHAT]}>
         <Chat />
       </Route>
       <Redirect to={SCREENS.SCREEN_LOGIN} />
