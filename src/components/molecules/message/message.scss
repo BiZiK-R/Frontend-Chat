@@ -59,3 +59,13 @@
     margin: 0;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .message {
+    &__text {
+      padding: 12px;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+}

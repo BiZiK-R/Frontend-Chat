@@ -44,7 +44,10 @@ export const Chat: FC = observer(() => {
           break;
       }
     } catch (error) {
-      console.log(error);
+      if (typeof event.data === "string") {
+        contacts.sendMessage({ text: event.data, your: true }, idContact);
+        console.log(event.data);
+      }
     }
   };
 
@@ -56,8 +59,7 @@ export const Chat: FC = observer(() => {
     const value = toJS(messageInput.value);
     const personId = idContact;
     if (value) {
-      contacts.sendMessage({ text: value, your: true }, personId);
-      const message = `{type: 'send_message', data: {text: messageInput.value, your: true, }}`;
+      const message = messageInput.value;
       ws.send(message);
       messageInput.resetInput();
     }
@@ -124,11 +126,12 @@ export const Chat: FC = observer(() => {
 
     if (typeof idContact !== "undefined" && idContact !== "") {
       const selectContact = data.find((contact) => contact.id === idContact);
-      const { name, dialogue } = selectContact!;
+      const { name, dialogue, gender } = selectContact!;
       return (
         <ChatMessage
           onBack={onFocusChat}
           name={name}
+          gender={gender}
           dialogue={dialogue}
           loading={loadingContact}
           onSendMsg={onSendMsg}

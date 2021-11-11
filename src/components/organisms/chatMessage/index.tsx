@@ -12,6 +12,7 @@ import { IDialogue } from "../../../types/types";
 interface ChatMessageProps {
   name?: string;
   lastSeen?: string;
+  gender?: string;
   dialogue?: IDialogue[];
   loading?: boolean;
   noContact?: boolean;
@@ -22,6 +23,7 @@ interface ChatMessageProps {
 export const ChatMessage: FC<ChatMessageProps> = ({
   name,
   lastSeen,
+  gender,
   dialogue,
   loading,
   noContact = false,
@@ -67,7 +69,12 @@ export const ChatMessage: FC<ChatMessageProps> = ({
   const listMessage = createDialogue(dialogue ? dialogue : []);
 
   const chatMsgHeader = checkSelectChat() && !loading && (
-    <ChatMsgHeader onBack={onBack} name={name} lastSeen={lastSeen} />
+    <ChatMsgHeader
+      gender={gender}
+      onBack={onBack}
+      name={name}
+      lastSeen={lastSeen}
+    />
   );
   const inputMsg = checkSelectChat() && !loading && (
     <InputMsg
