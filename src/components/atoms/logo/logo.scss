@@ -1,5 +1,6 @@
 .logo {
-  &_login {
+  &_login,
+  &_signup {
     margin-bottom: 16px;
   }
   &_chatHeader {
@@ -23,6 +24,7 @@
     &_signup {
       width: 83.76px;
       height: 32px;
+      margin-bottom: 14px;
     }
   }
 }

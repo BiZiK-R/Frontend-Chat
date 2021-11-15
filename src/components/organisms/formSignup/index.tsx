@@ -10,6 +10,7 @@ import { SCREENS } from "../../../routes/endpoints";
 import { SelectGender } from "../../molecules/selectGender";
 import { Authorization } from "../../../api/authorization";
 import { genders } from "../../../store/genders";
+import { observer } from "mobx-react-lite";
 
 import "./formSignup.scss";
 
@@ -21,12 +22,13 @@ const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
 
 const signup = new Authorization();
 
-genders.getGender();
-console.log(genders.gender);
-
-export const FormSignup: FC = () => {
+export const FormSignup: FC = observer(() => {
   const history = useHistory();
   const [btnDisabled, setBtnDisabled] = useState(false);
+
+  useEffect(() => {
+    genders.getGender();
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -144,4 +146,4 @@ export const FormSignup: FC = () => {
       </form>
     </div>
   );
-};
+});

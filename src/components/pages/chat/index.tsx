@@ -16,6 +16,10 @@ interface ParamTypes {
   idContact: string;
 }
 
+interface IFocusChat {
+  focusChat: boolean;
+}
+
 export const Chat: FC = observer(() => {
   const [loadingContact, setLoadingContact] = useState(false);
   const [focusChat, setFocusChat] = useState(false);
@@ -57,7 +61,6 @@ export const Chat: FC = observer(() => {
 
   const onSendMsg = () => {
     const value = toJS(messageInput.value);
-    const personId = idContact;
     if (value) {
       const message = messageInput.value;
       ws.send(message);
