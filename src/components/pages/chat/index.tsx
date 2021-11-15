@@ -9,6 +9,7 @@ import { messageInput } from "../../../store/messageInput";
 import { contacts } from "../../../store/contacts";
 import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
+import { uploadFile } from "../../../api/upload";
 
 import "./chat.scss";
 
@@ -43,6 +44,9 @@ export const Chat: FC = observer(() => {
         case "users_list":
           contacts.initialAllUsers(data.data);
           break;
+        case "user_joined_info":
+          getAllUsers();
+          break;
         default:
           console.log(data);
           break;
@@ -52,19 +56,6 @@ export const Chat: FC = observer(() => {
         contacts.sendMessage({ text: event.data, your: true }, idContact);
         console.log(event.data);
       }
-    }
-  };
-
-  const onFocusChat = () => {
-    setFocusChat(!focusChat);
-  };
-
-  const onSendMsg = () => {
-    const value = toJS(messageInput.value);
-    if (value) {
-      const message = messageInput.value;
-      ws.send(message);
-      messageInput.resetInput();
     }
   };
 
@@ -120,6 +111,30 @@ export const Chat: FC = observer(() => {
     getAllUsers();
   };
 
+  const onFocusChat = () => {
+    setFocusChat(!focusChat);
+  };
+
+  const onSendMsg = () => {
+    const value = toJS(messageInput.value);
+    if (value) {
+      const message = messageInput.value;
+      ws.send(message);
+      messageInput.resetInput();
+    }
+  };
+
+  const onLoadFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      console.log(files[0]);
+      console.log(files[0].name);
+      console.log(files[0].type);
+      console.log(files[0].size);
+      uploadFile.postFile(files);
+    }
+  };
+
   const getDialogue = (idContact: string | undefined) => {
     const data = toJS(contacts.allUsers);
     //console.log(idContact);
@@ -138,6 +153,7 @@ export const Chat: FC = observer(() => {
           dialogue={dialogue}
           loading={loadingContact}
           onSendMsg={onSendMsg}
+          onLoadFile={onLoadFile}
         />
       );
     } else return <ChatMessage />;

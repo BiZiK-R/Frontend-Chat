@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export class Authorization {
   _apiBase: string;
 

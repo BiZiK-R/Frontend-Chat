@@ -11,6 +11,9 @@
     margin: 0 32px 0 25px;
     cursor: pointer;
   }
+  &__clip-input-file {
+    display: none;
+  }
   &__send-icon {
     margin-right: 25px;
     cursor: pointer;

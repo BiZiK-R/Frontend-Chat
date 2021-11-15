@@ -11,17 +11,25 @@ interface LogoProps {
   placeholder: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSendMsg?: () => void;
+  onLoadFile?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputMsg: FC<LogoProps> = observer(
-  ({ value, onChange, placeholder, onSendMsg }) => {
+  ({ value, onChange, placeholder, onSendMsg, onLoadFile }) => {
     return (
       <div className="input-msg">
         <Button>
-          <img
-            className="input-msg__clip-icon"
-            src="/image/icon/clipIcon.svg"
-          />
+          <label className="input-msg__clip-label">
+            <input
+              onChange={onLoadFile}
+              className="input-msg__clip-input-file"
+              type="file"
+            />
+            <img
+              className="input-msg__clip-icon"
+              src="/image/icon/clipIcon.svg"
+            />
+          </label>
         </Button>
         <Input
           value={messageInput.value}

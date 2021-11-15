@@ -18,6 +18,7 @@ interface ChatMessageProps {
   noContact?: boolean;
   onBack?: () => void;
   onSendMsg?: () => void;
+  onLoadFile?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const ChatMessage: FC<ChatMessageProps> = ({
@@ -29,6 +30,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({
   noContact = false,
   onBack,
   onSendMsg,
+  onLoadFile,
 }) => {
   const [valueInput, setValueInput] = useState("");
   const location = useLocation().pathname;
@@ -82,6 +84,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({
       onChange={onChange}
       placeholder="Write something..."
       onSendMsg={onSendMsg}
+      onLoadFile={onLoadFile}
     />
   );
 
