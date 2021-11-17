@@ -49,7 +49,7 @@ class Contacts {
   sendMessage(message: { text: string; your: boolean }, personId: string) {
     this.allUsers = this.allUsers.map((contact) => {
       if (contact.id === personId) {
-        contact.dialogue.push(message);
+        contact.dialogue.unshift(message);
       }
       return contact;
     });

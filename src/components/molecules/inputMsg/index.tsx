@@ -3,19 +3,22 @@ import { Input } from "../../atoms/Input";
 import { Button } from "../../atoms/Button";
 import { observer } from "mobx-react-lite";
 import { messageInput } from "../../../store/messageInput";
+import { FileMsg } from "../fileMsg";
+import { storeFile } from "../../../store/storeFile";
 
 import "./inputMsg.scss";
 
 interface LogoProps {
   value: string;
   placeholder: string;
+  fileLoaded?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSendMsg?: () => void;
   onLoadFile?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputMsg: FC<LogoProps> = observer(
-  ({ value, onChange, placeholder, onSendMsg, onLoadFile }) => {
+  ({ value, onChange, placeholder, onSendMsg, onLoadFile, fileLoaded }) => {
     return (
       <div className="input-msg">
         <Button>
@@ -31,13 +34,17 @@ export const InputMsg: FC<LogoProps> = observer(
             />
           </label>
         </Button>
-        <Input
-          value={messageInput.value}
-          type="text"
-          onChange={(e) => messageInput.onChange(e)}
-          placeholder={placeholder}
-          theme="chat"
-        />
+        {fileLoaded ? (
+          <FileMsg file={storeFile.file} />
+        ) : (
+          <Input
+            value={messageInput.value}
+            type="text"
+            onChange={(e) => messageInput.onChange(e)}
+            placeholder={placeholder}
+            theme="chat"
+          />
+        )}
         <Button onClick={onSendMsg}>
           <img
             className="input-msg__send-icon"

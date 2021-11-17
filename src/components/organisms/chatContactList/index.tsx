@@ -23,8 +23,7 @@ export const ChatContactList: FC<ChatContactListProps> = ({
       return data.map((item) => {
         //const lastMsg = dialogue ? dialogue[0] : undefined;
         const { name, gender, id, dialogue } = item;
-        const lastMsg =
-          dialogue.length > 0 ? dialogue[dialogue.length - 1] : "";
+        const lastMsg = dialogue.length > 0 ? dialogue[0] : "";
         if (item.name && item.gender) {
           //setDataFiling(true);
           return (

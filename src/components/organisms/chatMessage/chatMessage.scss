@@ -13,8 +13,7 @@
     margin-bottom: 80px;
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: end;
+    flex-direction: column-reverse;
     overflow: auto;
     box-sizing: border-box;
     &::-webkit-scrollbar {
