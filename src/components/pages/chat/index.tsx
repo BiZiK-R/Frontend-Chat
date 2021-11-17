@@ -62,33 +62,32 @@ export const Chat: FC = observer(() => {
     ws.onerror = (error) => {
       console.log(`WS: [error] ${error}`);
     };
+    ws.onmessage = function (event) {
+      console.log("Получены данные " + event.data);
+      setLoadingContact(false);
+      try {
+        const data = JSON.parse(event.data);
+        switch (data.type) {
+          case "user_data":
+            //contacts.initialMe(data.data);
+            break;
+          case "users_list":
+            contacts.initialAllUsers(data.data);
+            break;
+          case "user_joined_info":
+            getAllUsers();
+            break;
+          default:
+            console.log(data);
+            break;
+        }
+      } catch (error) {
+        if (typeof event.data === "string") {
+          console.log(event.data);
+        }
+      }
+    };
   }, []);
-
-  ws.onmessage = function (event) {
-    console.log("Получены данные " + event.data);
-    setLoadingContact(false);
-    try {
-      const data = JSON.parse(event.data);
-      switch (data.type) {
-        case "user_data":
-          //contacts.initialMe(data.data);
-          break;
-        case "users_list":
-          contacts.initialAllUsers(data.data);
-          break;
-        case "user_joined_info":
-          getAllUsers();
-          break;
-        default:
-          console.log(data);
-          break;
-      }
-    } catch (error) {
-      if (typeof event.data === "string") {
-        console.log(event.data);
-      }
-    }
-  };
 
   const getAllUsers = () => {
     const allUsers = JSON.stringify({ type: "users_list" });
