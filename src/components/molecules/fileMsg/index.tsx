@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 
 import "./fileMsg.scss";
 
@@ -8,7 +8,6 @@ interface FileMsgProps {
 }
 
 export const FileMsg: FC<FileMsgProps> = ({ file, url }) => {
-  const [urlImg, setUrlImg] = useState<string>("/image/fileIcon.svg");
   const sizeString =
     file.size > 1048576
       ? `${(file.size / 1048576).toFixed(2)} MB`

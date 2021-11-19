@@ -7,6 +7,7 @@ import { ChatMsgHeader } from "../../molecules/chatMsgHeader";
 import { FileMsg } from "../../molecules/fileMsg";
 import "./chatMessage.scss";
 import { IDialogue } from "../../../types/types";
+import cn from "classnames";
 
 interface ChatMessageProps {
   name?: string;
@@ -48,7 +49,9 @@ export const ChatMessage: FC<ChatMessageProps> = ({
           return (
             <Message key={index} yourMsg={your}>
               {text}
-              <FileMsg file={fileData.file} url={fileData.url} />
+              <a href={fileData.url}>
+                <FileMsg file={fileData.file} url={fileData.url} />
+              </a>
             </Message>
           );
         }
@@ -91,7 +94,12 @@ export const ChatMessage: FC<ChatMessageProps> = ({
     <div className="chat-message">
       {chatMsgHeader}
       {!noContact && (
-        <div className="chat-message__messages">
+        <div
+          className={cn(
+            "chat-message__messages",
+            fileLoaded ? "chat-message__messages_with-file" : ""
+          )}
+        >
           {loading && <Loading />}
           {!loading && listMessage}
         </div>

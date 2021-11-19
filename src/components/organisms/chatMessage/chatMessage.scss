@@ -16,6 +16,9 @@
     flex-direction: column-reverse;
     overflow: auto;
     box-sizing: border-box;
+    &_with-file {
+      height: calc(100% - 96px - 117px);
+    }
     &::-webkit-scrollbar {
       background-color: #e1ecfe;
       width: 6px;
