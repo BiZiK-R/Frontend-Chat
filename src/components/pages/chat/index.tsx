@@ -18,16 +18,12 @@ interface ParamTypes {
   idContact: string;
 }
 
-interface IFocusChat {
-  focusChat: boolean;
-}
-
 let ws: WebSocket;
 
 export const Chat: FC = observer(() => {
-  const [loadingContact, setLoadingContact] = useState(false);
-  const [focusChat, setFocusChat] = useState(false);
-  const [fileLoaded, setFileLoaded] = useState(false);
+  const [loadingContact, setLoadingContact] = useState<boolean>(false);
+  const [focusChat, setFocusChat] = useState<boolean>(false);
+  const [fileLoaded, setFileLoaded] = useState<boolean>(false);
   const { idContact } = useParams<ParamTypes>();
 
   useEffect(() => {
@@ -36,9 +32,7 @@ export const Chat: FC = observer(() => {
         "connect_key"
       )}`
     );
-    console.log("Connect ");
 
-    console.log("mount");
     //setLoadingContact(true);
     ws.onopen = () => {
       console.log("WS: Соединение установленно");
@@ -111,20 +105,29 @@ export const Chat: FC = observer(() => {
   const onSendMsg = async () => {
     if (fileLoaded) {
       setFileLoaded(false);
-      const urlFile = await uploadFile.postFile(storeFile.file);
-      storeFile.resetStore();
+      const file = toJS(storeFile.file);
+      const value = toJS(messageInput.value);
+      const urlFile = await uploadFile.postFile(file);
       if (urlFile) {
-        contacts.sendMessage(
-          { text: `http://109.194.37.212:93${urlFile}`, your: true },
+        console.log(urlFile);
+        contacts.saveMessage(
+          {
+            text: value,
+            your: true,
+            fileData: { file: file, url: `http://109.194.37.212:93${urlFile}` },
+          },
           idContact
         );
+      } else {
+        alert("Error loading file");
       }
+      storeFile.resetStore();
+      messageInput.resetInput();
     } else {
       const value = toJS(messageInput.value);
       if (value) {
-        const message = messageInput.value;
-        contacts.sendMessage({ text: message, your: true }, idContact);
-        ws.send(message);
+        contacts.saveMessage({ text: value, your: true }, idContact);
+        ws.send(value);
         messageInput.resetInput();
       }
     }
@@ -133,40 +136,40 @@ export const Chat: FC = observer(() => {
   const onLoadFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      if (!fileLoaded) {
-        const fileType = files[0].type;
-        if (
-          fileType === "video/mp4" ||
-          fileType === "video/ogg" ||
-          fileType === "video/webm" ||
-          fileType === "audio/mpeg" ||
-          fileType === "audio/ogg" ||
-          fileType === "image/jpeg" ||
-          fileType === "image/gif" ||
-          fileType === "image/png" ||
-          fileType === "image/svg+xml"
-        ) {
-          console.log(files[0]);
+      const fileType = files[0].type;
+      if (
+        fileType === "video/mp4" ||
+        fileType === "video/ogg" ||
+        fileType === "video/webm" ||
+        fileType === "audio/mpeg" ||
+        fileType === "audio/ogg" ||
+        fileType === "image/jpeg" ||
+        fileType === "image/gif" ||
+        fileType === "image/png" ||
+        fileType === "image/svg+xml"
+      ) {
+        if (files[0].size < 2097152) {
+          //console.log(files[0]);
           storeFile.addFile(files[0]);
           setFileLoaded(true);
         } else {
-          alert("Invalid file format");
+          alert("The file must be no more than 2 MB");
         }
       } else {
-        alert(
-          "The file has already been uploaded. Send the selected file first so that before uploading the next one."
-        );
+        alert("Invalid file format");
       }
     }
+    e.target.value = "";
   };
 
   const getDialogue = (idContact: string | undefined) => {
     const data = toJS(contacts.allUsers);
     if (loadingContact) return <ChatMessage loading />;
+
     if (!(data.length && data[0].name && data[0].gender))
       return <ChatMessage noContact />;
 
-    if (typeof idContact !== "undefined" && idContact !== "") {
+    if (idContact) {
       const selectContact = data.find((contact) => contact.id === idContact);
       const { name, dialogue, gender } = selectContact!;
       return (

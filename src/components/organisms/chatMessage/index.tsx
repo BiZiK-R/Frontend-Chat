@@ -1,11 +1,10 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
+import { useParams } from "react-router-dom";
 import { Loading } from "../../molecules/loading";
 import { Message } from "../../molecules/message";
 import { InputMsg } from "../../molecules/inputMsg";
 import { ChatMsgHeader } from "../../molecules/chatMsgHeader";
 import { FileMsg } from "../../molecules/fileMsg";
-import { useLocation } from "react-router-dom";
-import { SCREENS } from "../../../routes/endpoints";
 import "./chatMessage.scss";
 import { IDialogue } from "../../../types/types";
 
@@ -22,6 +21,10 @@ interface ChatMessageProps {
   onLoadFile?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+interface ParamTypes {
+  idContact: string;
+}
+
 export const ChatMessage: FC<ChatMessageProps> = ({
   name,
   lastSeen,
@@ -34,32 +37,27 @@ export const ChatMessage: FC<ChatMessageProps> = ({
   onLoadFile,
   fileLoaded,
 }) => {
-  const [valueInput, setValueInput] = useState("");
-  const location = useLocation().pathname;
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValueInput(e.target.value);
-  };
-
-  const checkSelectChat = () => {
-    return location !== SCREENS.SCREEN_CHAT;
-  };
+  const { idContact } = useParams<ParamTypes>();
 
   const createDialogue = (dialogue: IDialogue[]) => {
-    if (checkSelectChat()) {
+    if (idContact) {
       return dialogue.map((dialogue, index) => {
-        const { text, your } = dialogue;
+        const { text, your, fileData } = dialogue;
+        console.log(!!fileData);
+        if (fileData) {
+          return (
+            <Message key={index} yourMsg={your}>
+              {text}
+              <FileMsg file={fileData.file} url={fileData.url} />
+            </Message>
+          );
+        }
         return (
           <Message key={index} yourMsg={!!your}>
             {text}
           </Message>
         );
       });
-      // return (
-      //   <Message key={location.slice(6)} yourMsg={true}>
-      //     {name}
-      //   </Message>
-      // );
     }
     return (
       <div className="chat-message__dialogue-no-selected">
@@ -72,7 +70,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({
 
   const listMessage = createDialogue(dialogue ? dialogue : []);
 
-  const chatMsgHeader = checkSelectChat() && !loading && (
+  const chatMsgHeader = idContact && !loading && (
     <ChatMsgHeader
       gender={gender}
       onBack={onBack}
@@ -80,10 +78,8 @@ export const ChatMessage: FC<ChatMessageProps> = ({
       lastSeen={lastSeen}
     />
   );
-  const inputMsg = checkSelectChat() && !loading && (
+  const inputMsg = idContact && !loading && (
     <InputMsg
-      value={valueInput}
-      onChange={onChange}
       placeholder="Write something..."
       onSendMsg={onSendMsg}
       onLoadFile={onLoadFile}

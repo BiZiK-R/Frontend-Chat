@@ -28,7 +28,7 @@ export const InputForm: FC<InputFormProps> = ({
   },
   ...props
 }) => {
-  const [focusInput, setFocusInput] = useState(false);
+  const [focusInput, setFocusInput] = useState<boolean>(false);
 
   const onFocus = () => {
     setFocusInput(true);

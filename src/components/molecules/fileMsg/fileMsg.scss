@@ -3,6 +3,8 @@
   display: flex;
   &__icon {
     margin-right: 7.33px;
+    height: 31px;
+    align-self: center;
   }
   &__description {
     p {

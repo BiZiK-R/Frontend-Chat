@@ -5,10 +5,11 @@ import { signupSchema } from "../../../validations/authorization";
 import { InputForm } from "../../molecules/inputForm";
 import { Button } from "../../atoms/Button";
 import { SecurityCode } from "../../molecules/securityCode";
+import { Loading } from "../../molecules/loading";
 //import captchaSrc from '../../../assets/captcha.png';
 import { SCREENS } from "../../../routes/endpoints";
 import { SelectGender } from "../../molecules/selectGender";
-import { Authorization } from "../../../api/authorization";
+import { authorization } from "../../../api/authorization";
 import { genders } from "../../../store/genders";
 import { observer } from "mobx-react-lite";
 
@@ -20,11 +21,10 @@ import "./formSignup.scss";
 
 const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
 
-const signup = new Authorization();
-
 export const FormSignup: FC = observer(() => {
   const history = useHistory();
-  const [btnDisabled, setBtnDisabled] = useState(false);
+  const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
+  const [uploadData, setUploadData] = useState<boolean>(false);
 
   useEffect(() => {
     genders.getGender();
@@ -41,10 +41,12 @@ export const FormSignup: FC = observer(() => {
     },
     onSubmit: async (values) => {
       setBtnDisabled(true);
-      const res = await signup.postSignUp(values);
+      setUploadData(true);
+      const res = await authorization.postSignUp(values);
       if (res) {
         history.push(SCREENS.SCREEN_LOGIN);
       }
+      setUploadData(false);
       setBtnDisabled(!res);
     },
     validationSchema: signupSchema,
@@ -143,6 +145,7 @@ export const FormSignup: FC = observer(() => {
             Log in
           </Button>
         </div>
+        {uploadData ? <Loading /> : ""}
       </form>
     </div>
   );

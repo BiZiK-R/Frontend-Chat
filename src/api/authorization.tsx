@@ -1,4 +1,4 @@
-export class Authorization {
+class Authorization {
   _apiBase: string;
 
   constructor() {
@@ -15,9 +15,9 @@ export class Authorization {
       credentials: "same-origin",
     });
     if (response.ok) {
-      console.log(response);
+      //console.log(response);
       const json = await response.json();
-      console.log("Успех: ", json);
+      //console.log("Успех: ", json);
       return json;
     }
     console.log(`Ошибка: ${response.status} ${response.statusText}`);
@@ -40,7 +40,7 @@ export class Authorization {
     signupData.append("gender_id", `${data.gender_id}`);
     signupData.append("captcha", data.captcha);
     const res = await this.postRequest("/auth/register", signupData);
-    console.log(res);
+    //console.log(res);
     return res;
   };
 
@@ -61,3 +61,5 @@ export class Authorization {
     return res;
   };
 }
+
+export const authorization = new Authorization();

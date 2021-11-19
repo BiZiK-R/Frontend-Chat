@@ -1,11 +1,17 @@
 export interface IFile {
   name: string;
-  size: string;
+  size: number;
+  type: string;
+  url: string;
 }
 
 export interface IDialogue {
   text?: string;
-  your?: boolean;
+  your: boolean;
+  fileData?: {
+    file: File;
+    url?: string;
+  };
 }
 export interface IContact {
   name: string;

@@ -7,6 +7,9 @@
   height: 80px;
   background: #ffffff;
   box-sizing: border-box;
+  &_with-file {
+    height: 117px;
+  }
   &__clip-icon {
     margin: 0 32px 0 25px;
     cursor: pointer;
@@ -17,6 +20,13 @@
   &__send-icon {
     margin-right: 25px;
     cursor: pointer;
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    &_with-file > div:first-child {
+      margin-bottom: 10px;
+    }
   }
 }
 

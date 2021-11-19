@@ -5,19 +5,18 @@ import { loginSchema } from "../../../validations/authorization";
 import { InputForm } from "../../molecules/inputForm";
 import { Button } from "../../atoms/Button";
 import { SecurityCode } from "../../molecules/securityCode";
+import { Loading } from "../../molecules/loading";
 //import captchaSrc from "../../../assets/captcha.png";
 import { SCREENS } from "../../../routes/endpoints";
-import { Authorization } from "../../../api/authorization";
-import axios from "axios";
+import { authorization } from "../../../api/authorization";
 
 import "./formLogin.scss";
 
 const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
 
-const login = new Authorization();
-
 export const FormLogin: FC = () => {
-  const [btnDisabled, setBtnDisabled] = useState(false);
+  const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
+  const [uploadData, setUploadData] = useState<boolean>(false);
   const history = useHistory();
 
   const formik = useFormik({
@@ -28,8 +27,10 @@ export const FormLogin: FC = () => {
     },
     onSubmit: async (values) => {
       setBtnDisabled(true);
-      const res = await login.postLogin(values);
+      setUploadData(true);
+      const res = await authorization.postLogin(values);
       setBtnDisabled(!res);
+      setUploadData(false);
       if (res) {
         history.push(SCREENS.SCREEN_CHAT);
       }
@@ -97,6 +98,7 @@ export const FormLogin: FC = () => {
             Registration
           </Button>
         </div>
+        {uploadData ? <Loading /> : ""}
       </form>
     </div>
   );
