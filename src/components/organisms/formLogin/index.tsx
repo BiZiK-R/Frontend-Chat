@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import { loginSchema } from "../../../validations/authorization";
@@ -9,15 +9,21 @@ import { Loading } from "../../molecules/loading";
 //import captchaSrc from "../../../assets/captcha.png";
 import { SCREENS } from "../../../routes/endpoints";
 import { authorization } from "../../../api/authorization";
+import { captcha } from "../../../api/captcha";
 
 import "./formLogin.scss";
 
-const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
+//const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
 
 export const FormLogin: FC = () => {
   const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
   const [uploadData, setUploadData] = useState<boolean>(false);
+  const [captchaSrc, setCaptchaSrc] = useState<string>("");
   const history = useHistory();
+
+  useEffect(() => {
+    updateCaptcha();
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -29,14 +35,21 @@ export const FormLogin: FC = () => {
       setBtnDisabled(true);
       setUploadData(true);
       const res = await authorization.postLogin(values);
-      setBtnDisabled(!res);
-      setUploadData(false);
       if (res) {
         history.push(SCREENS.SCREEN_CHAT);
       }
+      setBtnDisabled(!res);
+      setUploadData(false);
+      updateCaptcha();
     },
     validationSchema: loginSchema,
   });
+
+  const updateCaptcha = async () => {
+    setCaptchaSrc("");
+    const CapSrc = await captcha.update();
+    setCaptchaSrc(CapSrc);
+  };
 
   return (
     <div className="form-login">
@@ -70,6 +83,7 @@ export const FormLogin: FC = () => {
           <div className="form-login__security-code">
             <SecurityCode
               onChange={formik.handleChange}
+              onClick={updateCaptcha}
               inValidInput={
                 formik.touched.captcha && Boolean(formik.errors.captcha)
               }

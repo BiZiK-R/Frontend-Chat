@@ -108,8 +108,8 @@ export const Chat: FC = observer(() => {
       const file = toJS(storeFile.file);
       const value = toJS(messageInput.value);
       const urlFile = await uploadFile.postFile(file);
+      ws.send(value);
       if (urlFile) {
-        console.log(urlFile);
         contacts.saveMessage(
           {
             text: value,
