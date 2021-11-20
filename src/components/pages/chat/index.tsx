@@ -3,7 +3,6 @@ import { ChatHeader } from "../../molecules/chatHeader";
 import { ChatContactList } from "../../organisms/chatContactList";
 import { ChatMessage } from "../../organisms/chatMessage";
 import { useParams } from "react-router-dom";
-import { DATA, DATAUNDF } from "../../../data/data";
 import cn from "classnames";
 import { messageInput } from "../../../store/messageInput";
 import { contacts } from "../../../store/contacts";
@@ -34,11 +33,9 @@ export const Chat: FC = observer(() => {
       )}`
     );
 
-    //setLoadingContact(true);
     ws.onopen = () => {
       console.log("WS: Соединение установленно");
       createContcatLsit();
-      //setLoadingContact(false);
     };
 
     ws.onclose = (event) => {
@@ -47,8 +44,6 @@ export const Chat: FC = observer(() => {
           `WS: [close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`
         );
       } else {
-        // например, сервер убил процесс или сеть недоступна
-        // обычно в этом случае event.code 1006
         console.log("WS: [close] Соединение прервано");
         alert("Lost connection");
       }
@@ -56,15 +51,14 @@ export const Chat: FC = observer(() => {
 
     ws.onerror = (error) => {
       console.log(`WS: [error] ${error}`);
+      alert("Something went wrong");
     };
     ws.onmessage = function (event) {
-      console.log("Получены данные " + event.data);
       setLoadingContact(false);
       try {
         const data = JSON.parse(event.data);
         switch (data.type) {
           case "user_data":
-            //contacts.initialMe(data.data);
             break;
           case "users_list":
             contacts.initialAllUsers(data.data);
@@ -73,13 +67,10 @@ export const Chat: FC = observer(() => {
             getAllUsers();
             break;
           default:
-            console.log(data);
             break;
         }
       } catch (error) {
-        if (typeof event.data === "string") {
-          console.log(event.data);
-        }
+        console.log(error);
       }
     };
   }, []);
@@ -160,7 +151,6 @@ export const Chat: FC = observer(() => {
         fileType === "image/svg+xml"
       ) {
         if (files[0].size < 2097152) {
-          //console.log(files[0]);
           storeFile.addFile(files[0]);
           setFileLoaded(true);
         } else {
@@ -209,11 +199,7 @@ export const Chat: FC = observer(() => {
           focusChat ? "chat__content_focus-chat" : ""
         )}
       >
-        <ChatContactList
-          onClick={onFocusChat}
-          loading={loadingContact}
-          //data={DATA}
-        />
+        <ChatContactList onClick={onFocusChat} loading={loadingContact} />
         {displayDialogue}
       </div>
     </div>

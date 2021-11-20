@@ -22,7 +22,6 @@ class Contacts {
       }
       return contact;
     });
-    console.log(toJS(this.allUsers));
   }
 
   initialAllUsers(data: { name: string; gender: string }[]) {

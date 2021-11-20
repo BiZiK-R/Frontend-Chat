@@ -20,7 +20,6 @@ class UploadFile {
       const json = await response.text();
       return json;
     } else {
-      //console.log(response);
       return false;
     }
   };

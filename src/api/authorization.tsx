@@ -15,12 +15,10 @@ class Authorization {
       credentials: "same-origin",
     });
     if (response.ok) {
-      //console.log(response);
       const json = await response.json();
-      //console.log("Успех: ", json);
       return json;
     }
-    console.log(`Ошибка: ${response.status} ${response.statusText}`);
+    console.log(`Error: ${response.status} ${response.statusText}`);
     return false;
   };
 
@@ -40,7 +38,6 @@ class Authorization {
     signupData.append("gender_id", `${data.gender_id}`);
     signupData.append("captcha", data.captcha);
     const res = await this.postRequest("/auth/register", signupData);
-    //console.log(res);
     return res;
   };
 
@@ -50,7 +47,6 @@ class Authorization {
     captcha: string;
   }) => {
     const loginData = new FormData();
-    //console.log(data.login)
     loginData.append("login", data.login);
     loginData.append("password", data.password);
     loginData.append("captcha", data.captcha);

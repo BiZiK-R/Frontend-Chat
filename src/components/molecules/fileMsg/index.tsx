@@ -27,9 +27,7 @@ export const FileMsg: FC<FileMsgProps> = ({ file, url }) => {
       } else {
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        console.log("Загрузка файла");
         reader.onload = () => {
-          console.log(`${reader.result}`);
           setUrlFile(`${reader.result}`);
         };
       }

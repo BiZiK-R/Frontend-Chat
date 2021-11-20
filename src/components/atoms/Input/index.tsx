@@ -41,13 +41,6 @@ export const Input: FC<InputProps> = ({
   theme,
 }) => {
   const callbacks = {
-    // onChange: useCallback(
-    //   (e) => {
-    //     const value = e.target.value;
-    //     return onChange(value);
-    //   },
-    //   [onChange]
-    // ),
     onFocus: useCallback(() => {
       return onFocus();
     }, [onFocus]),

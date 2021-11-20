@@ -44,7 +44,6 @@ export const ChatMessage: FC<ChatMessageProps> = ({
     if (idContact) {
       return dialogue.map((dialogue, index) => {
         const { text, your, fileData } = dialogue;
-        console.log(!!fileData);
         if (fileData) {
           return (
             <Message key={index} yourMsg={your}>

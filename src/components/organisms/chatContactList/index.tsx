@@ -8,24 +8,20 @@ import { toJS } from "mobx";
 import "./chatContactList.scss";
 
 interface ChatContactListProps {
-  //data: IContact[] | undefined;
   loading: boolean;
   onClick?: () => void;
 }
 
 export const ChatContactList: FC<ChatContactListProps> = ({
-  // data,
   onClick,
   loading,
 }) => {
   const createListContact = (data: IContact[] | undefined) => {
     if (typeof data !== "undefined" && data.length > 0) {
       return data.map((item) => {
-        //const lastMsg = dialogue ? dialogue[0] : undefined;
         const { name, gender, id, dialogue } = item;
         const lastMsg = dialogue.length > 0 ? dialogue[0] : "";
         if (item.name && item.gender) {
-          //setDataFiling(true);
           return (
             <ChatContactItem
               onClick={onClick}

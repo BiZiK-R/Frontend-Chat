@@ -6,14 +6,11 @@ import { InputForm } from "../../molecules/inputForm";
 import { Button } from "../../atoms/Button";
 import { SecurityCode } from "../../molecules/securityCode";
 import { Loading } from "../../molecules/loading";
-//import captchaSrc from "../../../assets/captcha.png";
 import { SCREENS } from "../../../routes/endpoints";
 import { authorization } from "../../../api/authorization";
 import { captcha } from "../../../api/captcha";
 
 import "./formLogin.scss";
-
-//const captchaSrc = "http://109.194.37.212:93//api/auth/captcha";
 
 export const FormLogin: FC = () => {
   const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
