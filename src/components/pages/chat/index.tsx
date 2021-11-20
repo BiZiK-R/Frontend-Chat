@@ -24,6 +24,7 @@ export const Chat: FC = observer(() => {
   const [loadingContact, setLoadingContact] = useState<boolean>(false);
   const [focusChat, setFocusChat] = useState<boolean>(false);
   const [fileLoaded, setFileLoaded] = useState<boolean>(false);
+  const [sendingMsg, setSendingMsg] = useState<boolean>(false);
   const { idContact } = useParams<ParamTypes>();
 
   useEffect(() => {
@@ -103,34 +104,44 @@ export const Chat: FC = observer(() => {
   };
 
   const onSendMsg = async () => {
-    if (fileLoaded) {
-      setFileLoaded(false);
-      const file = toJS(storeFile.file);
-      const value = toJS(messageInput.value);
-      const urlFile = await uploadFile.postFile(file);
-      ws.send(value);
-      if (urlFile) {
-        contacts.saveMessage(
-          {
-            text: value,
-            your: true,
-            fileData: { file: file, url: `http://109.194.37.212:93${urlFile}` },
-          },
-          idContact
-        );
-      } else {
-        alert("Error loading file");
-      }
-      storeFile.resetStore();
-      messageInput.resetInput();
-    } else {
-      const value = toJS(messageInput.value);
-      if (value) {
-        contacts.saveMessage({ text: value, your: true }, idContact);
+    if (!sendingMsg) {
+      if (fileLoaded) {
+        setSendingMsg(true);
+        setFileLoaded(false);
+        const file = toJS(storeFile.file);
+        const value = toJS(messageInput.value);
+        const urlFile = await uploadFile.postFile(file);
         ws.send(value);
+        if (urlFile) {
+          contacts.saveMessage(
+            {
+              text: value,
+              your: true,
+              fileData: {
+                file: file,
+                url: `http://109.194.37.212:93${urlFile}`,
+              },
+            },
+            idContact
+          );
+        } else {
+          alert("Error loading file");
+        }
         messageInput.resetInput();
+        storeFile.resetStore();
+      } else {
+        setSendingMsg(true);
+        const value = toJS(messageInput.value);
+        if (value) {
+          contacts.saveMessage({ text: value, your: true }, idContact);
+          ws.send(value);
+          messageInput.resetInput();
+        }
       }
+    } else {
+      alert("Wait for the message to be sent");
     }
+    setSendingMsg(false);
   };
 
   const onLoadFile = (e: React.ChangeEvent<HTMLInputElement>) => {

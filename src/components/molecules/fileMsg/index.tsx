@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 
 import "./fileMsg.scss";
 
@@ -8,12 +8,13 @@ interface FileMsgProps {
 }
 
 export const FileMsg: FC<FileMsgProps> = ({ file, url }) => {
+  const [urlFile, setUrlFile] = useState<string>("");
   const sizeString =
     file.size > 1048576
       ? `${(file.size / 1048576).toFixed(2)} MB`
       : `${(file.size / 1024).toFixed(2)} KB`;
 
-  const getUrl = () => {
+  useEffect(() => {
     const fileType = file.type;
     if (
       fileType === "image/jpeg" ||
@@ -22,22 +23,20 @@ export const FileMsg: FC<FileMsgProps> = ({ file, url }) => {
       fileType === "image/svg+xml"
     ) {
       if (url) {
-        return url;
+        setUrlFile(url);
       } else {
         const reader = new FileReader();
         reader.readAsDataURL(file);
-
+        console.log("Загрузка файла");
         reader.onload = () => {
-          return `${reader.result}`;
+          console.log(`${reader.result}`);
+          setUrlFile(`${reader.result}`);
         };
       }
     } else {
-      return "/image/fileIcon.svg";
+      setUrlFile("/image/fileIcon.svg");
     }
-  };
-
-  const urlFile = getUrl();
-  console.log(urlFile);
+  }, []);
 
   return (
     <div className="file-msg">

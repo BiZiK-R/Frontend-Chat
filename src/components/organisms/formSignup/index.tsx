@@ -48,9 +48,11 @@ export const FormSignup: FC = observer(() => {
       const res = await authorization.postSignUp(values);
       if (res) {
         history.push(SCREENS.SCREEN_LOGIN);
+        return;
       }
       setUploadData(false);
       setBtnDisabled(!res);
+      alert("Something went wrong");
       updateCaptcha();
     },
     validationSchema: signupSchema,

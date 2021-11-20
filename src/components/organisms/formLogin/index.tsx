@@ -37,9 +37,11 @@ export const FormLogin: FC = () => {
       const res = await authorization.postLogin(values);
       if (res) {
         history.push(SCREENS.SCREEN_CHAT);
+        return;
       }
       setBtnDisabled(!res);
       setUploadData(false);
+      alert("Something went wrong");
       updateCaptcha();
     },
     validationSchema: loginSchema,
