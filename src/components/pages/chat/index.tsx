@@ -66,6 +66,16 @@ export const Chat: FC = observer(() => {
           case "user_joined_info":
             getAllUsers();
             break;
+          case "user_message":
+            contacts.saveMessage(
+              {
+                text: data.data.message.text,
+                your: false,
+                fileData: data.data.message?.file,
+              },
+              data.data.personId
+            );
+            break;
           default:
             break;
         }
